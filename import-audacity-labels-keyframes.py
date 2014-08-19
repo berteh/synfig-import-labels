@@ -14,7 +14,7 @@
 # from command line (only on sif files, need to unzip sifz manually)
 #      python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
 #
-# from synfigstudio
+# from synfigstudio (only on sif files, need to save as sif in synfig first)
 #      caret/right-click > Plug-Ins > Import Audacity Labels as Keyframes
 #
 #------------------------------------------------
@@ -57,7 +57,8 @@ def process(sifin_filename, labels_filename, sifout_filename):
 	
 	# put existing keyframes description in attributes, to enable fast xpath search with no other external module
 	for key in canvas.findall("./keyframe"):
-		key.set("_desc",key.text)
+		if key.text is not None :
+			key.set("desc",key.text)
 	#DEBUG ET.dump(canvas)
 
 	#process labels into keyframes		
@@ -79,7 +80,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 			
 			#what follows is reusable for any format, TODO turn into function
 			if IMPORT_START:
-				k = canvas.find("keyframe[@_desc='%s%s']" % (desc, START_SUFFIX))
+				k = canvas.find("keyframe[@desc='%s%s']" % (desc, START_SUFFIX))
 				if OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
 					if (k is None):
 						#print "  creating keyframe: %s" % desc # DEBUG
@@ -90,8 +91,8 @@ def process(sifin_filename, labels_filename, sifout_filename):
 					k.set("time", "%ds %df" % (ss, sf)) #length is set automatically by synfig
 				#else print "  skipping existing start keyframe: %s" % desc # DEBUG
 			
-			if IMPORT_END:
-				k = canvas.find("keyframe[@_desc='%s%s']" % (desc, END_SUFFIX))
+			if IMPORT_END and not (start == end):
+				k = canvas.find("keyframe[@desc='%s%s']" % (desc, END_SUFFIX))
 				if OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
 					if (k is None):
 						#print "  creating keyframe: %s" % desc # DEBUG
@@ -101,9 +102,9 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 					k.set("time", "%ds %df" % (es, ef))
 				#else print "  skipping existing end keyframe: %s" % desc # DEBUG
-	
+
 	# write modified xml tree to the same sif file
-	tree.write(sifout_filename, encoding="UTF-8")
+	tree.write(sifout_filename, encoding="UTF-8", xml_declaration=True)
 
 
 #main
@@ -111,7 +112,10 @@ if len(sys.argv) < 2:
 	sys.exit("Missing synfig filename as argument")
 else:
 	# defaults
-	sifin_filename = sys.argv[1]	
+	sifin_filename = sys.argv[1]
+	#make sure the plugin is called on sif, and not sifz
+	if not (os.path.splitext(sifin_filename)[-2].lower().endswith('.sif') or os.path.splitext(sifin_filename)[-1].lower().endswith('.sif')):
+		sys.exit("Synfig plug-ins only work on sif file, not sifz.\n\nPlease save your Synfig project (%s) as sif, then try again." % sifin_filename)
 	labels_filename = sys.argv[2] if len(sys.argv)>2 else os.path.join(os.path.dirname(sifin_filename), AUDACITY_LABELS_FILE)
 	sifout_filename = sys.argv[3] if len(sys.argv)>3 else sifin_filename
 	process(sifin_filename, labels_filename, sifout_filename)
