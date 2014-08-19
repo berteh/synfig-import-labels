@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+   <name>Import Audacity Labels as Keyframes</name>
+   <name xml:lang="fr">Importer Labess Audacity en Keyframes</name>
+   <exec>import-audacity-labels-keyframes.py</exec>
+</plugin>
