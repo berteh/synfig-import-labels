@@ -15,7 +15,7 @@ or use the command-line: (only on sif files, need to unzip sifz manually)
 
 ## Install
 
-Decompress plugin archive into your synfig plugins directory (in linux: home/<user>/.synfig/plugins)
+Decompress [plugin archive[(https://github.com/berteh/import-audacity-labels-keyframes/archive/master.zip )into your synfig plugins directory (in linux: home/<user>/.synfig/plugins)
 
 Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
 
