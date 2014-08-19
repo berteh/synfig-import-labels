@@ -4,25 +4,20 @@ A [Synfig](http://synfig.org) plug-in to import [Audacity](http://audacity.sourc
 
 Synfig Studio is a free and open-source 2D animation software, designed as powerful industrial-strength solution for creating film-quality animation using a vector and bitmap artwork.
 
-## Install
-Requirements: Python (Synfig is a recommended option)
-
-Decompress plugin archive into your synfig plugins directory (in linux: home/<user>/.synfig/plugins)
-
-Moreover at http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins
-
 ## Use
+1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
+1. export your labels via Tracks > Edit Labels > export, in Audacity.
+1. open your synfig project and run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
 
-from synfigstudio run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
-   
-from the command-line: (only on sif files, need to unzip sifz manually)
+or use the command-line: (only on sif files, need to unzip sifz manually)
 
     python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
 
-More: 
+## Install
 
-- how to use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
-- export your labels via Tracks > Edit Labels > export, in Audacity.
+Decompress plugin archive into your synfig plugins directory (in linux: home/<user>/.synfig/plugins)
+
+Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
 
 ## Configuration
 
