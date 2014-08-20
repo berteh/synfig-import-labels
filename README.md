@@ -16,13 +16,15 @@ or use the command-line: (only on sif files, unzip sifz manually before)
 
 ## Install
 
-Either decompress [plugin archive](https://github.com/berteh/import-audacity-labels-keyframes/archive/master.zip ) into your synfig plugins directory (in linux: home/<user>/.synfig/plugins), or `git clone https://github.com/berteh/import-audacity-labels-keyframes.git` in the same location.
+Decompress [plugin archive](https://github.com/berteh/import-audacity-labels-keyframes/archive/master.zip ) into your synfig plugins directory (in linux: home/<user>/.synfig/plugins)
+
+Another option is to clone [this repository](https://github.com/berteh/import-audacity-labels-keyframes.git) in the same location.
 
 Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
 
 ## Configuration
 
-edit the settings.py for customisation:
+edit `settings.py` for customisation:
 
     AUDACITY_LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory
     IMPORT_START = True					# set to True to import keyframe for start of label
@@ -30,7 +32,6 @@ edit the settings.py for customisation:
     START_SUFFIX = ""					# suffix to add to a label-start keyframe, to distinguish it from label-end frame
     END_SUFFIX = " - end"				# suffix to add to a label-end keyframe, to distinguish it from label-start frame
     OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
-
 
 ## Support
 Preferably use github's issues tracking system for bug reports, feature requests and contributing to this code.

@@ -33,14 +33,13 @@
 # OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
 #
 #------------------------------------------------
-# no changes should be made below for configuration. 
-# Feel free to improve code below and share your modifications at
-# TODO add url.
+# Feel free to improve the code below and share your modifications at
+# https://github.com/berteh/import-audacity-labels-keyframes/issues
 
 import os
 import sys
 import xml.etree.ElementTree as ET  # common Python xml implementation
-import re  # easy import of keyframe with regular expression
+import re  # easy import of keyframes with regular expression
 import settings as s
 
 def process(sifin_filename, labels_filename, sifout_filename):	
