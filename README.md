@@ -7,7 +7,7 @@ Synfig Studio is a free and open-source 2D animation software, designed as power
 ## Use
 1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
 1. export your labels via Tracks > Edit Labels > export, in Audacity.
-1. open your synfig project, save is as .sif (Synfig Plug-ins don't work on the default .sifz format for now)
+1. open your synfig project, save it as .sif (Synfig Plug-ins don't work on the default .sifz format for now)
 1. run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
 
 or use the command-line: (only on sif files, unzip sifz manually before)
@@ -16,13 +16,13 @@ or use the command-line: (only on sif files, unzip sifz manually before)
 
 ## Install
 
-Decompress [plugin archive](https://github.com/berteh/import-audacity-labels-keyframes/archive/master.zip ) into your synfig plugins directory (in linux: home/<user>/.synfig/plugins)
+Either decompress [plugin archive](https://github.com/berteh/import-audacity-labels-keyframes/archive/master.zip ) into your synfig plugins directory (in linux: home/<user>/.synfig/plugins), or `git clone https://github.com/berteh/import-audacity-labels-keyframes.git` in the same location.
 
 Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
 
 ## Configuration
 
-edit the plugin file directly for customisation:
+edit the settings.py for customisation:
 
     AUDACITY_LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory
     IMPORT_START = True					# set to True to import keyframe for start of label
