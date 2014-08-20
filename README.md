@@ -13,6 +13,9 @@ Synfig Studio is a free and open-source 2D animation software, designed as power
 or use the command-line: (only on sif files, unzip sifz manually before)
 
     python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
+    
+
+The use of this plugin in a complete animation design is described in the [Synfig Audio Synchronisation tutorial](http://wiki.synfig.org/wiki/Doc:Audio_Synchronisation)
 
 ## Install
 
