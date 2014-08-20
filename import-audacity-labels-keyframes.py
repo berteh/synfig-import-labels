@@ -29,7 +29,7 @@ IMPORT_START = True					# set to True to import keyframe for start of label
 IMPORT_END = False					# set to True to import keyframe for end of label
 START_SUFFIX = ""					# suffix to add to a label-start keyframe, to distinguish it from label-end frame
 END_SUFFIX = " - end"				# suffix to add to a label-end keyframe, to distinguish it from label-start frame
-OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
+OVERWRITE_KEYFRAMES_WITH_SAME_NAME = True # set to True to replace keyframe with exact same description
 #
 #------------------------------------------------
 # no changes should be made below for configuration. 
