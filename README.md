@@ -7,9 +7,10 @@ Synfig Studio is a free and open-source 2D animation software, designed as power
 ## Use
 1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
 1. export your labels via Tracks > Edit Labels > export, in Audacity.
-1. open your synfig project and run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
+1. open your synfig project, save is as .sif (Synfig Plug-ins don't work on the default .sifz format for now)
+1. run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
 
-or use the command-line: (only on sif files, need to unzip sifz manually)
+or use the command-line: (only on sif files, unzip sifz manually before)
 
     python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
 
