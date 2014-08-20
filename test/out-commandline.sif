@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<canvas antialias="1" begin-time="0f" bgcolor="0.500000 0.500000 0.500000 1.000000" end-time="5s" fps="24.000" height="270" version="0.9" view-box="-4.000000 2.250000 4.000000 -2.250000" width="480" xres="2834.645752" yres="2834.645752">
+  <name>Synfig Test for Keyframe import</name>
+  <keyframe active="true" desc="check for overwrite" time="0f">check for overwrite</keyframe>
+<keyframe active="true" time="0s 0f">part 1</keyframe><keyframe active="true" time="0s 19f">highlight in part 1</keyframe><keyframe active="true" time="1s 23f">down in part 1</keyframe><keyframe active="true" time="1s 7f">some instantaneous event</keyframe><keyframe active="true" time="63s 6f">check for minutes</keyframe><keyframe active="true" time="3749s 1f">check for hours</keyframe></canvas>

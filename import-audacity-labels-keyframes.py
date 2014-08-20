@@ -23,13 +23,14 @@
 # decompress plugin archive into home/<user>/.synfig/plugins
 #------------------------------------------------
 #
-# configuration
-AUDACITY_LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory - TODO get filename from synfig filechooser or drag-n-drop: HOW?
-IMPORT_START = True					# set to True to import keyframe for start of label
-IMPORT_END = False					# set to True to import keyframe for end of label
-START_SUFFIX = ""					# suffix to add to a label-start keyframe, to distinguish it from label-end frame
-END_SUFFIX = " - end"				# suffix to add to a label-end keyframe, to distinguish it from label-start frame
-OVERWRITE_KEYFRAMES_WITH_SAME_NAME = True # set to True to replace keyframe with exact same description
+# configuration is done by editing settings.py, the following options are available:
+#
+# AUDACITY_LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory - TODO get filename from synfig filechooser or drag-n-drop: HOW?
+# IMPORT_START = True				# set to True to import keyframe for start of label
+# IMPORT_END = False				# set to True to import keyframe for end of label
+# START_SUFFIX = ""					# suffix to add to a label-start keyframe, to distinguish it from label-end frame
+# END_SUFFIX = " - end"				# suffix to add to a label-end keyframe, to distinguish it from label-start frame
+# OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
 #
 #------------------------------------------------
 # no changes should be made below for configuration. 
@@ -40,6 +41,7 @@ import os
 import sys
 import xml.etree.ElementTree as ET  # common Python xml implementation
 import re  # easy import of keyframe with regular expression
+import settings as s
 
 def process(sifin_filename, labels_filename, sifout_filename):	
 
@@ -79,25 +81,25 @@ def process(sifin_filename, labels_filename, sifout_filename):
 			desc = str(m.group(5))
 			
 			#what follows is reusable for any format, TODO turn into function
-			if IMPORT_START:
-				k = canvas.find("keyframe[@desc='%s%s']" % (desc, START_SUFFIX))
-				if OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
+			if s.IMPORT_START:
+				k = canvas.find("keyframe[@desc='%s%s']" % (desc, s.START_SUFFIX))
+				if s.OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
 					if (k is None):
 						#print "  creating keyframe: %s" % desc # DEBUG
 						k = ET.Element('keyframe',{"active": "true"})				
-						k.text = desc+START_SUFFIX
+						k.text = desc+s.START_SUFFIX
 						canvas.append(k)
 
 					k.set("time", "%ds %df" % (ss, sf)) #length is set automatically by synfig
 				#else print "  skipping existing start keyframe: %s" % desc # DEBUG
 			
-			if IMPORT_END and not (start == end):
-				k = canvas.find("keyframe[@desc='%s%s']" % (desc, END_SUFFIX))
-				if OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
+			if s.IMPORT_END and not (start == end):
+				k = canvas.find("keyframe[@desc='%s%s']" % (desc, s.END_SUFFIX))
+				if s.OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
 					if (k is None):
 						#print "  creating keyframe: %s" % desc # DEBUG
 						k = ET.Element('keyframe',{"active": "true"})				
-						k.text = desc+END_SUFFIX
+						k.text = desc+s.END_SUFFIX
 						canvas.append(k)
 
 					k.set("time", "%ds %df" % (es, ef))
@@ -116,6 +118,6 @@ else:
 	#make sure the plugin is called on sif, and not sifz
 	if not (os.path.splitext(sifin_filename)[-2].lower().endswith('.sif') or os.path.splitext(sifin_filename)[-1].lower().endswith('.sif')):
 		sys.exit("Synfig plug-ins only work on sif file, not sifz.\n\nPlease save your Synfig project (%s) as sif, then try again." % sifin_filename)
-	labels_filename = sys.argv[2] if len(sys.argv)>2 else os.path.join(os.path.dirname(sifin_filename), AUDACITY_LABELS_FILE)
+	labels_filename = sys.argv[2] if len(sys.argv)>2 else os.path.join(os.path.dirname(sifin_filename), s.AUDACITY_LABELS_FILE)
 	sifout_filename = sys.argv[3] if len(sys.argv)>3 else sifin_filename
 	process(sifin_filename, labels_filename, sifout_filename)
