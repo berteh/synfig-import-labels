@@ -37,4 +37,4 @@ edit `settings.py` for customisation:
     OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
 
 ## Support
-Preferably use github's issues tracking system for bug reports, feature requests and contributing to this code.
+Preferably use github's [issues tracker](https://github.com/berteh/import-audacity-labels-keyframes/issues) for bug reports, feature requests and contributing to this code.
