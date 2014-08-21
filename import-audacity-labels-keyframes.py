@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 #
 # Copyright (c) 2014 by Berteh <berteh@gmail.com>
 #
@@ -48,6 +47,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 	if not os.path.exists(labels_filename):
 		sys.exit("Audacity Labels file not found: %s " % labels_filename)
 	with open(labels_filename, 'r') as f:
+		#if s.DEBUG: print " reading labels from %s" % labels_filename # commented for "print" statements lead to syntax error in synfig.
 		# Read the file contents and generate a list with each line
 		lines = f.readlines()
 
@@ -60,10 +60,12 @@ def process(sifin_filename, labels_filename, sifout_filename):
 	for key in canvas.findall("./keyframe"):
 		if key.text is not None :
 			key.set("desc",key.text)
-	#DEBUG ET.dump(canvas)
+	#if s.DEBUG: 
+	#	print " copied descriptions of keyframes to attributes in sif file:"
+	#	ET.dump(canvas)
 
 	#process labels into keyframes		
-	pattern  = '(\d+),(\d+)\t(\d+),(\d+)\t(.+)$'
+	pattern  = '(\d+)[,|\.](\d+)\t(\d+)[,|\.](\d+)\t(.+)$'
 	for line in lines:
 		# pattern applied to each line. 'match' is quite strict and starts at beginning of line, 'search' could be used instead for more flexibility (&risk) 
 		m = re.match(pattern, line)
@@ -84,28 +86,29 @@ def process(sifin_filename, labels_filename, sifout_filename):
 				k = canvas.find("keyframe[@desc='%s%s']" % (desc, s.START_SUFFIX))
 				if s.OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
 					if (k is None):
-						#print "  creating keyframe: %s" % desc # DEBUG
+						#if s.DEBUG: print " creating keyframe: %s" % desc
 						k = ET.Element('keyframe',{"active": "true"})				
 						k.text = desc+s.START_SUFFIX
 						canvas.append(k)
 
 					k.set("time", "%ds %df" % (ss, sf)) #length is set automatically by synfig
-				#else print "  skipping existing start keyframe: %s" % desc # DEBUG
+				#elif s.DEBUG: print " skipping existing start keyframe: %s" % desc
 			
 			if s.IMPORT_END and not (start == end):
 				k = canvas.find("keyframe[@desc='%s%s']" % (desc, s.END_SUFFIX))
 				if s.OVERWRITE_KEYFRAMES_WITH_SAME_NAME or (k is None):
 					if (k is None):
-						#print "  creating keyframe: %s" % desc # DEBUG
+						#if s.DEBUG: print " creating keyframe: %s" % desc
 						k = ET.Element('keyframe',{"active": "true"})				
 						k.text = desc+s.END_SUFFIX
 						canvas.append(k)
 
 					k.set("time", "%ds %df" % (es, ef))
-				#else print "  skipping existing end keyframe: %s" % desc # DEBUG
+				#elif s.DEBUG: print " skipping existing end keyframe: %s" % desc
 
 	# write modified xml tree to the same sif file
 	tree.write(sifout_filename, encoding="UTF-8", xml_declaration=True)
+	#if s.DEBUG: print "done"
 
 
 #main
