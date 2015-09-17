@@ -37,8 +37,8 @@
 
 import os
 import sys
-import xml.etree.ElementTree as ET  # common Python xml implementation
-import re  # easy import of keyframes with regular expression
+import xml.etree.ElementTree as ET
+import re
 import settings as s
 
 def process(sifin_filename, labels_filename, sifout_filename):	
@@ -51,7 +51,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 		# Read the file contents and generate a list with each line
 		lines = f.readlines()
 
-	# read input sif file as xml (TODO consider SAX 'parse' instead, for very big xml files)
+	# read input sif file as xml
 	tree = ET.parse(sifin_filename)
 	canvas = tree.getroot()
 	fps = int(float(canvas.get("fps")))
@@ -66,11 +66,15 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 	#process labels into keyframes		
 	pattern  = '(\d+)[,|\.](\d+)\t(\d+)[,|\.](\d+)\t(.+)$'
+	texts = []
+	starts = []
+	ends = []
+	
 	for line in lines:
 		# pattern applied to each line. 'match' is quite strict and starts at beginning of line, 'search' could be used instead for more flexibility (&risk) 
 		m = re.match(pattern, line)
 		if m:			
-			#convert audacity time to synfig seconds+frame
+			#convert audacity time to synfig seconds+frame.
 			start = float(m.group(1)+"."+m.group(2))
 			ss = int (start)
 			sf = int(fps * (start - ss))
@@ -80,6 +84,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 			ef = int(fps * (end - es))
 
 			desc = str(m.group(5))
+
 			
 			#what follows is reusable for any format, TODO turn into function
 			if s.IMPORT_START:
@@ -105,6 +110,48 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 					k.set("time", "%ds %df" % (es, ef))
 				#elif s.DEBUG: print " skipping existing end keyframe: %s" % desc
+
+			if s.GENERATE_OBJECTS:
+				texts.append(desc)
+				starts.append("%ss"%start)
+				ends.append("%ss"%end)
+
+	# generate objects
+	if s.GENERATE_OBJECTS:
+		try:
+			import pystache			
+			renderer = pystache.Renderer(search_dirs="templates", file_extension="xml") #todo load template only once before loop.
+
+		except ImportError:
+			print "Could not load template engine for objects generation. Please verify you have both a pystache and templates subdirectories, or re-download & re-install this plugin."
+			sys.exit() # skip objects generation
+		
+		
+		for i,t in enumerate(texts):			
+
+			values = {
+				'text':t,
+				'time1':'0s', # /canvas/@begin-time  or t_frame-2
+				'time2':'2s',   # t_frame
+				'time3':'4s',   # t_frame
+				'time4':'5s',  # /canvas/@end-time or t_frame+2
+				'value1':'0.0',
+				'value2':'1.0',
+				'value3':'1.0',
+				'value4':'0,0',
+				'transition':'halt',# one of: constant, auto, linear, clamped, halt			
+				'groupid1':'234AE234A', #some HEX hash of text+time+rand
+				'groupid2':'234AE234B',
+				'groupid3':'234AE234D',
+				'groupid4':'234AE234C',
+				'origin_x':'0',
+				'origin_y':'0'  # to shift down
+			}
+		
+			print "1 more object is being added to canvas"
+			l = renderer.render_name(s.TEMPLATE_NAME, values)
+			layer = ET.fromstring(l)
+			canvas.append(layer)	
 
 	# write modified xml tree to the same sif file
 	tree.write(sifout_filename, encoding="UTF-8", xml_declaration=True)

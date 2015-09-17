@@ -1,0 +1,77 @@
+<layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="{{text}}">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <animated type="real">
+        <waypoint time="{{time1}}" before="constant" after="{{transition}}">
+          <real guid="{{groupid1}}" value="{{value1}}"/>
+        </waypoint>
+        <waypoint time="{{time2}}" before="{{transition}}" after="{{transition}}">
+          <real guid="{{groupid2}}" value="{{value2}}"/>
+        </waypoint>
+        <waypoint time="{{time3}}" before="{{transition}}" after="{{transition}}">
+          <real guid="{{groupid3}}" value="{{value3}}"/>
+        </waypoint>
+        <waypoint time="{{time4}}" before="{{transition}}" after="constant">
+          <real guid="{{groupid4}}" value="{{value4}}"/>
+        </waypoint>
+      </animated>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>{{text}}</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>1.000000</r>
+        <g>1.000000</g>
+        <b>1.000000</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <vector>
+        <x>0.2500000000</x>
+        <y>0.2500000000</y>
+      </vector>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <vector>
+        <x>{{origin_x}}</x>
+        <y>{{origin_y}}</y>
+      </vector>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
