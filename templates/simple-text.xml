@@ -3,18 +3,21 @@
       <real value="0.0000000000"/>
     </param>
     <param name="amount">
-      <animated type="real">
-        <waypoint time="{{time1}}" before="constant" after="{{transition}}">
-          <real guid="{{groupid1}}" value="{{value1}}"/>
-        </waypoint>
+      <animated type="real"> <!-- put value_middle before value_before and value_after, so they have precedence when time matches-->
         <waypoint time="{{time2}}" before="{{transition}}" after="{{transition}}">
-          <real guid="{{groupid2}}" value="{{value2}}"/>
+          <real guid="{{group2}}" value="{{value_middle}}"/>
         </waypoint>
         <waypoint time="{{time3}}" before="{{transition}}" after="{{transition}}">
-          <real guid="{{groupid3}}" value="{{value3}}"/>
+          <real guid="{{group3}}" value="{{value_middle}}"/>
         </waypoint>
+        <waypoint time="0s" before="constant" after="constant">
+          <real guid="A0A0A0A0A0A0" value="{{value_before}}"/>
+        </waypoint> 
+        <waypoint time="{{time1}}" before="constant" after="{{transition}}">
+          <real guid="{{group1}}" value="{{value_before}}"/>
+        </waypoint>        
         <waypoint time="{{time4}}" before="{{transition}}" after="constant">
-          <real guid="{{groupid4}}" value="{{value4}}"/>
+          <real guid="{{group4}}" value="{{value_after}}"/>
         </waypoint>
       </animated>
     </param>
@@ -26,9 +29,9 @@
     </param>
     <param name="color">
       <color>
-        <r>1.000000</r>
-        <g>1.000000</g>
-        <b>1.000000</b>
+        <r>0.300000</r>
+        <g>0.000000</g>
+        <b>0.000000</b>
         <a>1.000000</a>
       </color>
     </param>

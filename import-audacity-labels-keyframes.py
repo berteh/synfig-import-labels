@@ -40,6 +40,13 @@ import sys
 import xml.etree.ElementTree as ET
 import re
 import settings as s
+import random
+
+def secFrames2sec(fps, secFrame): #convert Synfig "Xs Yf" time notation to <float>s in seconds.
+	pattern  = "^((\d+)s)?(\s)?((\d+)f)?$"
+	m = re.match(pattern, secFrame)
+	[ g1, sec, g2, g3, frame] = m.groups(0)
+	return float(sec) + float(frame)/fps
 
 def process(sifin_filename, labels_filename, sifout_filename):	
 
@@ -73,10 +80,10 @@ def process(sifin_filename, labels_filename, sifout_filename):
 	for line in lines:
 		# pattern applied to each line. 'match' is quite strict and starts at beginning of line, 'search' could be used instead for more flexibility (&risk) 
 		m = re.match(pattern, line)
-		if m:			
+		if m:
 			#convert audacity time to synfig seconds+frame.
 			start = float(m.group(1)+"."+m.group(2))
-			ss = int (start)
+			ss = int(start)
 			sf = int(fps * (start - ss))
 
 			end = float(m.group(3)+"."+m.group(4))
@@ -113,42 +120,56 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 			if s.GENERATE_OBJECTS:
 				texts.append(desc)
-				starts.append("%ss"%start)
-				ends.append("%ss"%end)
+				starts.append(start)
+				ends.append(end)
 
 	# generate objects
 	if s.GENERATE_OBJECTS:
 		try:
-			import pystache			
-			renderer = pystache.Renderer(search_dirs="templates", file_extension="xml") #todo load template only once before loop.
+			import pystache
+			renderer = pystache.Renderer(search_dirs="templates", file_extension="xml") #todo preferably parse template only once before loop.
 
 		except ImportError:
 			print "Could not load template engine for objects generation. Please verify you have both a pystache and templates subdirectories, or re-download & re-install this plugin."
 			sys.exit() # skip objects generation
 		
-		
-		for i,t in enumerate(texts):			
+		b = secFrames2sec(fps, canvas.get("begin-time")) # lower bound for time
+		e = secFrames2sec(fps, canvas.get("end-time")) # upper bound for time
+		d = s.ANIMATION_INTERVAL
+		r = s.RANDOM_ORIGIN
+		view = canvas.get("view-box").split()		
+		[minx, maxy, maxx, miny] = [float(elem) for elem in view]
+
+		for i,t in enumerate(texts):
+
+			if (r>0):
+				ox = random.uniform(minx, maxx)*r/100
+				oy = random.uniform(miny, maxy)*r/100
+			else:
+				ox = 0
+				oy = 0
 
 			values = {
 				'text':t,
-				'time1':'0s', # /canvas/@begin-time  or t_frame-2
-				'time2':'2s',   # t_frame
-				'time3':'4s',   # t_frame
-				'time4':'5s',  # /canvas/@end-time or t_frame+2
-				'value1':'0.0',
-				'value2':'1.0',
-				'value3':'1.0',
-				'value4':'0,0',
-				'transition':'halt',# one of: constant, auto, linear, clamped, halt			
-				'groupid1':'234AE234A', #some HEX hash of text+time+rand
-				'groupid2':'234AE234B',
-				'groupid3':'234AE234D',
-				'groupid4':'234AE234C',
-				'origin_x':'0',
-				'origin_y':'0'  # to shift down
+				'value_before':s.VALUE_BEFORE,
+				'value_middle':s.VALUE_MIDDLE,				
+				'value_after':s.VALUE_AFTER,
+				'time1':str(max(b,starts[i]-d))+'s',
+				'time2':str(starts[i])+'s',
+				'time3':str(ends[i])+'s',
+				'time4':str(min(ends[i]+d,e))+'s',
+				'transition':s.WAYPOINT_TYPE,
+				'origin_x':ox,
+				'origin_y':oy
 			}
+			values.update({
+				'group1':values['time1'].encode("hex"),
+				'group2':values['time2'].encode("hex"),
+				'group3':values['time3'].encode("hex"),
+				'group4':values['time4'].encode("hex")
+				})
 		
-			print "1 more object is being added to canvas"
+			print "1 object is being added to canvas for '%s'"%t
 			l = renderer.render_name(s.TEMPLATE_NAME, values)
 			layer = ET.fromstring(l)
 			canvas.append(layer)	
