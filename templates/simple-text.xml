@@ -1,0 +1,80 @@
+<layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="{{text}}">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <animated type="real"> <!-- put value_middle before value_before and value_after, so they have precedence when time matches-->
+        <waypoint time="{{time2}}" before="{{transition}}" after="{{transition}}">
+          <real guid="{{group2}}" value="{{value_middle}}"/>
+        </waypoint>
+        <waypoint time="{{time3}}" before="{{transition}}" after="{{transition}}">
+          <real guid="{{group3}}" value="{{value_middle}}"/>
+        </waypoint>
+        <waypoint time="0s" before="constant" after="constant">
+          <real guid="A0A0A0A0A0A0" value="{{value_before}}"/>
+        </waypoint> 
+        <waypoint time="{{time1}}" before="constant" after="{{transition}}">
+          <real guid="{{group1}}" value="{{value_before}}"/>
+        </waypoint>        
+        <waypoint time="{{time4}}" before="{{transition}}" after="constant">
+          <real guid="{{group4}}" value="{{value_after}}"/>
+        </waypoint>
+      </animated>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>{{text}}</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.300000</r>
+        <g>0.000000</g>
+        <b>0.000000</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <vector>
+        <x>0.2500000000</x>
+        <y>0.2500000000</y>
+      </vector>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <vector>
+        <x>{{origin_x}}</x>
+        <y>{{origin_y}}</y>
+      </vector>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>

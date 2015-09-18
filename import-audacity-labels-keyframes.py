@@ -37,9 +37,16 @@
 
 import os
 import sys
-import xml.etree.ElementTree as ET  # common Python xml implementation
-import re  # easy import of keyframes with regular expression
+import xml.etree.ElementTree as ET
+import re
 import settings as s
+import random
+
+def secFrames2sec(fps, secFrame): #convert Synfig "Xs Yf" time notation to <float>s in seconds.
+	pattern  = "^((\d+)s)?(\s)?((\d+)f)?$"
+	m = re.match(pattern, secFrame)
+	[ g1, sec, g2, g3, frame] = m.groups(0)
+	return float(sec) + float(frame)/fps
 
 def process(sifin_filename, labels_filename, sifout_filename):	
 
@@ -51,7 +58,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 		# Read the file contents and generate a list with each line
 		lines = f.readlines()
 
-	# read input sif file as xml (TODO consider SAX 'parse' instead, for very big xml files)
+	# read input sif file as xml
 	tree = ET.parse(sifin_filename)
 	canvas = tree.getroot()
 	fps = int(float(canvas.get("fps")))
@@ -66,13 +73,17 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 	#process labels into keyframes		
 	pattern  = '(\d+)[,|\.](\d+)\t(\d+)[,|\.](\d+)\t(.+)$'
+	texts = []
+	starts = []
+	ends = []
+	
 	for line in lines:
 		# pattern applied to each line. 'match' is quite strict and starts at beginning of line, 'search' could be used instead for more flexibility (&risk) 
 		m = re.match(pattern, line)
-		if m:			
-			#convert audacity time to synfig seconds+frame
+		if m:
+			#convert audacity time to synfig seconds+frame.
 			start = float(m.group(1)+"."+m.group(2))
-			ss = int (start)
+			ss = int(start)
 			sf = int(fps * (start - ss))
 
 			end = float(m.group(3)+"."+m.group(4))
@@ -80,6 +91,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 			ef = int(fps * (end - es))
 
 			desc = str(m.group(5))
+
 			
 			#what follows is reusable for any format, TODO turn into function
 			if s.IMPORT_START:
@@ -105,6 +117,62 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 					k.set("time", "%ds %df" % (es, ef))
 				#elif s.DEBUG: print " skipping existing end keyframe: %s" % desc
+
+			if s.GENERATE_OBJECTS:
+				texts.append(desc)
+				starts.append(start)
+				ends.append(end)
+
+	# generate objects
+	if s.GENERATE_OBJECTS:
+		try:
+			import pystache
+			renderer = pystache.Renderer(search_dirs="templates", file_extension="xml") #todo preferably parse template only once before loop.
+
+		except ImportError:
+			print "Could not load template engine for objects generation. Please verify you have both a pystache and templates subdirectories, or re-download & re-install this plugin."
+			sys.exit() # skip objects generation
+		
+		b = secFrames2sec(fps, canvas.get("begin-time")) # lower bound for time
+		e = secFrames2sec(fps, canvas.get("end-time")) # upper bound for time
+		d = s.ANIMATION_INTERVAL
+		r = s.RANDOM_ORIGIN
+		view = canvas.get("view-box").split()		
+		[minx, maxy, maxx, miny] = [float(elem) for elem in view]
+
+		for i,t in enumerate(texts):
+
+			if (r>0):
+				ox = random.uniform(minx, maxx)*r/100
+				oy = random.uniform(miny, maxy)*r/100
+			else:
+				ox = 0
+				oy = 0
+
+			values = {
+				'text':t,
+				'value_before':s.VALUE_BEFORE,
+				'value_middle':s.VALUE_MIDDLE,				
+				'value_after':s.VALUE_AFTER,
+				'time1':str(max(b,starts[i]-d))+'s',
+				'time2':str(starts[i])+'s',
+				'time3':str(ends[i])+'s',
+				'time4':str(min(ends[i]+d,e))+'s',
+				'transition':s.WAYPOINT_TYPE,
+				'origin_x':ox,
+				'origin_y':oy
+			}
+			values.update({
+				'group1':values['time1'].encode("hex"),
+				'group2':values['time2'].encode("hex"),
+				'group3':values['time3'].encode("hex"),
+				'group4':values['time4'].encode("hex")
+				})
+		
+			print "1 object is being added to canvas for '%s'"%t
+			l = renderer.render_name(s.TEMPLATE_NAME, values)
+			layer = ET.fromstring(l)
+			canvas.append(layer)	
 
 	# write modified xml tree to the same sif file
 	tree.write(sifout_filename, encoding="UTF-8", xml_declaration=True)

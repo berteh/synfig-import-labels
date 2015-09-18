@@ -1,8 +1,18 @@
-# Import Audacity Labels as Keyframes
+# Import Audacity Labels as Keyframes and/or Kinetic Typography (artistic subtitles)
 
-A [Synfig](http://synfig.org) plug-in to import [Audacity](http://audacity.sourceforge.net/) track labels as Synfig keyframes.
+A [Synfig](http://synfig.org) plug-in to create time reference and/or artistic kinetic text effects in Synfig, from [Audacity](http://audacity.sourceforge.net/) track labels (aka subtitles).
 
 Synfig Studio is a free and open-source 2D animation software, designed as powerful industrial-strength solution for creating film-quality animation using a vector and bitmap artwork.
+
+The generated time reference (keyframes) is great for synchronizing animation with your audio.
+
+The generated kinetic texts objects is a great basis for beautiful typographic animations, and can be customized easily to achieve your prefered effect(s).
+
+## An Example:
+Using a simple white background and importing a set of 6 text lines with their timings the following animation is generated automatically: automatic keyframes (top-right), automatic objects (bottom-left) auto-animated (bottom-left)
+![example in synfig](http://i61.tinypic.com/fa1x3.jpg)
+
+watch the full animation: http://i57.tinypic.com/xc1m1.jpg
 
 ## Use
 1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
@@ -15,7 +25,9 @@ or use the command-line: (only on sif files, unzip sifz manually before)
     python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
     
 
-The use of this plugin in a complete animation design is described in the [Synfig Audio Synchronisation tutorial](http://wiki.synfig.org/wiki/Doc:Audio_Synchronisation)
+The use of this plugin to generate keyframes in a complete animation design is described in the [Synfig Audio Synchronisation tutorial](http://wiki.synfig.org/wiki/Doc:Audio_Synchronisation)
+
+A tutorial will be written on creating kynetic typographies one day... but I (not secretly) hope you beat me to it!
 
 ## Install
 
@@ -29,12 +41,24 @@ Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plu
 
 edit `settings.py` for customisation:
 
-    AUDACITY_LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory
-    IMPORT_START = True					# set to True to import keyframe for start of label
-    IMPORT_END = False					# set to True to import keyframe for end of label
-    START_SUFFIX = ""					# suffix to add to a label-start keyframe, to distinguish it from label-end frame
-    END_SUFFIX = " - end"				# suffix to add to a label-end keyframe, to distinguish it from label-start frame
-    OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
+    # configuration for keyframes import
+    #
+    AUDACITY_LABELS_FILE = "labels2.txt" # audacity labels file name, must be located in your synfig project directory
+    IMPORT_START = True                 # set to True to import keyframe for start of label
+    IMPORT_END = True                   # set to True to import keyframe for end of label
+    START_SUFFIX = ""                   # suffix to add to a label-start keyframe, to distinguish it from label-end frame
+    END_SUFFIX = " - end"               # suffix to add to a label-end keyframe, to distinguish it from label-start frame
+    OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False   # set to True to replace keyframe with exact same description
+    GENERATE_OBJECTS = True             # set to True to generate objects (such as text layers) for each label
+    #
+    # settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False.
+    TEMPLATE_NAME = "popping-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
+    ANIMATION_INTERVAL = 0.3        # interval (before and after the label time) used for transition, in seconds. default is 0.5
+    RANDOM_ORIGIN = 70              # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])
+    WAYPOINT_TYPE = "halt"          # one of: constant, auto, linear, clamped, halt
+    VALUE_BEFORE = "0.0"
+    VALUE_MIDDLE = "1.0"
+    VALUE_AFTER = "0.3"
 
 ## Support
 Preferably use github's [issues tracker](https://github.com/berteh/import-audacity-labels-keyframes/issues) for bug reports, feature requests and contributing to this code.
