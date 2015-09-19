@@ -3,21 +3,18 @@
       <real value="0.0000000000"/>
     </param>
     <param name="amount">
-      <animated type="real"> <!-- put value_middle before value_before and value_after, so they have precedence when time matches-->
+      <animated type="real"> <!-- put loop_middle before loop_before and loop_after, so they have precedence when time matches-->
+        <waypoint time="{{time1}}" before="constant" after="{{transition}}">
+          <real guid="{{group1}}" value="{{loop_before}}"/>
+        </waypoint>        
         <waypoint time="{{time2}}" before="{{transition}}" after="{{transition}}">
-          <real guid="{{group2}}" value="{{value_middle}}"/>
+          <real guid="{{group2}}" value="{{loop_middle}}"/>
         </waypoint>
         <waypoint time="{{time3}}" before="{{transition}}" after="{{transition}}">
-          <real guid="{{group3}}" value="{{value_middle}}"/>
+          <real guid="{{group3}}" value="{{loop_middle}}"/>
         </waypoint>
-        <waypoint time="0s" before="constant" after="constant">
-          <real guid="A0A0A0A0A0A0" value="{{value_before}}"/>
-        </waypoint> 
-        <waypoint time="{{time1}}" before="constant" after="{{transition}}">
-          <real guid="{{group1}}" value="{{value_before}}"/>
-        </waypoint>        
         <waypoint time="{{time4}}" before="{{transition}}" after="constant">
-          <real guid="{{group4}}" value="{{value_after}}"/>
+          <real guid="{{group4}}" value="{{loop_after}}"/>
         </waypoint>
       </animated>
     </param>

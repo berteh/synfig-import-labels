@@ -130,7 +130,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 			renderer = pystache.Renderer(search_dirs="templates", file_extension="xml") #todo preferably parse template only once before loop.
 
 		except ImportError:
-			print "Could not load template engine for objects generation. Please verify you have both a pystache and templates subdirectories, or re-download & re-install this plugin."
+			#print "Could not load template engine for objects generation. Please verify you have both a pystache and templates subdirectories, or re-download & re-install this plugin."
 			sys.exit() # skip objects generation
 		
 		b = secFrames2sec(fps, canvas.get("begin-time")) # lower bound for time
@@ -148,7 +148,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 				objTimes = [starts[i] + (ends[i]-starts[i]) * j for j,word in enumerate(objects)]
 			else:
 				objects = [t]
-				objTimes = [start[i]]
+				objTimes = [starts[i]]
 
 			#generate object, turn into function
 			for j,o in enumerate(objects):
@@ -162,8 +162,10 @@ def process(sifin_filename, labels_filename, sifout_filename):
 				values = {
 					'text':o,
 					'value_before':s.VALUE_BEFORE,
-					'value_middle':s.VALUE_MIDDLE,				
 					'value_after':s.VALUE_AFTER,
+					'loop_before':s.LOOP_BEFORE,
+					'loop_middle':s.LOOP_MIDDLE,
+					'loop_after':s.LOOP_AFTER,
 					'time1':str(max(b,starts[i]-d))+'s',
 					'time2':str(objTimes[j])+'s',
 					'time3':str(ends[i])+'s',
@@ -179,7 +181,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 					'group4':values['time4'].encode("hex")
 					})
 			
-				print "1 object is being added to canvas for '%s'"%t
+				#print "1 object is being added to canvas for '%s'"%t
 				l = renderer.render_name(s.TEMPLATE_NAME, values)
 				layer = ET.fromstring(l)
 				canvas.append(layer)	

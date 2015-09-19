@@ -27,7 +27,7 @@
   <keyframe time="3s 17f" active="true">part five - end</keyframe>
   <keyframe time="4s 6f" active="true">part six</keyframe>
   <keyframe time="4s 8f" active="true">part six - end</keyframe>
-  <layer type="SolidColor" active="true" exclude_from_rendering="false" version="0.1">
+  <layer type="group" active="true" exclude_from_rendering="false" version="0.2" desc="bg">
     <param name="z_depth">
       <real value="0.0000000000"/>
     </param>
@@ -37,13 +37,143 @@
     <param name="blend_method">
       <integer value="0" static="true"/>
     </param>
-    <param name="color">
-      <color>
-        <r>1.000000</r>
-        <g>1.000000</g>
-        <b>1.000000</b>
-        <a>1.000000</a>
-      </color>
+    <param name="origin">
+      <vector>
+        <x>0.0000000000</x>
+        <y>0.0000000000</y>
+      </vector>
+    </param>
+    <param name="transformation">
+      <composite type="transformation">
+        <offset>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </offset>
+        <angle>
+          <angle value="0.000000"/>
+        </angle>
+        <skew_angle>
+          <angle value="0.000000"/>
+        </skew_angle>
+        <scale>
+          <vector>
+            <x>1.0000000000</x>
+            <y>1.0000000000</y>
+          </vector>
+        </scale>
+      </composite>
+    </param>
+    <param name="canvas">
+      <canvas>
+        <layer type="SolidColor" active="true" exclude_from_rendering="false" version="0.1">
+          <param name="z_depth">
+            <real value="0.0000000000"/>
+          </param>
+          <param name="amount">
+            <real value="1.0000000000"/>
+          </param>
+          <param name="blend_method">
+            <integer value="0" static="true"/>
+          </param>
+          <param name="color">
+            <color>
+              <r>1.000000</r>
+              <g>1.000000</g>
+              <b>1.000000</b>
+              <a>1.000000</a>
+            </color>
+          </param>
+        </layer>
+        <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="text">
+          <param name="z_depth">
+            <real value="0.0000000000"/>
+          </param>
+          <param name="amount">
+            <real value="0.9999999907"/>
+          </param>
+          <param name="blend_method">
+            <integer value="0"/>
+          </param>
+          <param name="text">
+            <string>this animation has been generated automatically 
+from an Audacity Labels file, with SynfigStudio.
+All Open Source animation</string>
+          </param>
+          <param name="color">
+            <color>
+              <r>0.000001</r>
+              <g>0.000001</g>
+              <b>0.000001</b>
+              <a>1.000000</a>
+            </color>
+          </param>
+          <param name="family">
+            <string>Sans Serif</string>
+          </param>
+          <param name="style">
+            <integer value="0"/>
+          </param>
+          <param name="weight">
+            <integer value="400"/>
+          </param>
+          <param name="compress">
+            <real value="1.0000000000"/>
+          </param>
+          <param name="vcompress">
+            <real value="1.0000000000"/>
+          </param>
+          <param name="size">
+            <vector>
+              <x>0.1333333403</x>
+              <y>0.1333333403</y>
+            </vector>
+          </param>
+          <param name="orient">
+            <vector>
+              <x>0.5000000000</x>
+              <y>0.5000000000</y>
+            </vector>
+          </param>
+          <param name="origin">
+            <vector>
+              <x>0.9415920973</x>
+              <y>-1.7408642769</y>
+            </vector>
+          </param>
+          <param name="use_kerning">
+            <bool value="true"/>
+          </param>
+          <param name="grid_fit">
+            <bool value="false"/>
+          </param>
+          <param name="invert">
+            <bool value="false"/>
+          </param>
+        </layer>
+      </canvas>
+    </param>
+    <param name="time_offset">
+      <time value="0s"/>
+    </param>
+    <param name="children_lock">
+      <bool value="false"/>
+    </param>
+    <param name="outline_grow">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="z_range">
+      <bool value="false" static="true"/>
+    </param>
+    <param name="z_range_position">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="z_range_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="z_range_blur">
+      <real value="0.0000000000"/>
     </param>
   </layer>
   <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part one">
@@ -52,11 +182,14 @@
     </param>
     <param name="amount">
       <animated type="real">
+        <waypoint time="0s" before="constant" after="halt">
+          <real value="0.0000000000"/>
+        </waypoint>
         <waypoint time="0.89999998s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="1.20000005s" before="halt" after="constant">
-          <real guid="312E3273BFDE2A20B4B200000000000C" value="0.3000000000"/>
+        <waypoint time="1.39999998s" before="halt" after="constant">
+          <real value="0.3000000000"/>
         </waypoint>
       </animated>
     </param>
@@ -103,74 +236,8 @@
     </param>
     <param name="origin">
       <vector>
-        <x>0.5414738655</x>
-        <y>-0.7248148322</y>
-      </vector>
-    </param>
-    <param name="use_kerning">
-      <bool value="true"/>
-    </param>
-    <param name="grid_fit">
-      <bool value="false"/>
-    </param>
-    <param name="invert">
-      <bool value="false"/>
-    </param>
-  </layer>
-  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="text">
-    <param name="z_depth">
-      <real value="0.0000000000"/>
-    </param>
-    <param name="amount">
-      <real value="0.9999999907"/>
-    </param>
-    <param name="blend_method">
-      <integer value="0"/>
-    </param>
-    <param name="text">
-      <string>this animation has been generated automatically 
-from an Audacity Labels file, with SynfigStudio.
-All Open Source animation</string>
-    </param>
-    <param name="color">
-      <color>
-        <r>0.000001</r>
-        <g>0.000001</g>
-        <b>0.000001</b>
-        <a>1.000000</a>
-      </color>
-    </param>
-    <param name="family">
-      <string>Sans Serif</string>
-    </param>
-    <param name="style">
-      <integer value="0"/>
-    </param>
-    <param name="weight">
-      <integer value="400"/>
-    </param>
-    <param name="compress">
-      <real value="1.0000000000"/>
-    </param>
-    <param name="vcompress">
-      <real value="1.0000000000"/>
-    </param>
-    <param name="size">
-      <vector>
-        <x>0.1333333403</x>
-        <y>0.1333333403</y>
-      </vector>
-    </param>
-    <param name="orient">
-      <vector>
-        <x>0.5000000000</x>
-        <y>0.5000000000</y>
-      </vector>
-    </param>
-    <param name="origin">
-      <vector>
-        <x>0.9415920973</x>
-        <y>-1.7408642769</y>
+        <x>2.5868105888</x>
+        <y>0.5670760274</y>
       </vector>
     </param>
     <param name="use_kerning">
@@ -189,16 +256,16 @@ All Open Source animation</string>
     </param>
     <param name="amount">
       <animated type="real">
-        <waypoint time="0.69999999s" before="auto" after="auto">
+        <waypoint time="0.5s" before="constant" after="halt">
           <real value="0.0000000000"/>
         </waypoint>
         <waypoint time="1s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="1.871346s" before="constant" after="halt">
+        <waypoint time="1.871346s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="2.17134595s" before="halt" after="constant">
+        <waypoint time="2.371346s" before="halt" after="constant">
           <real value="0.3000000000"/>
         </waypoint>
       </animated>
@@ -246,8 +313,8 @@ All Open Source animation</string>
     </param>
     <param name="origin">
       <vector>
-        <x>-0.6841334701</x>
-        <y>1.1098890305</y>
+        <x>0.4834947884</x>
+        <y>-0.5177246332</y>
       </vector>
     </param>
     <param name="use_kerning">
@@ -266,16 +333,16 @@ All Open Source animation</string>
     </param>
     <param name="amount">
       <animated type="real">
-        <waypoint time="1.66679597s" before="auto" after="auto">
+        <waypoint time="1.46679604s" before="constant" after="halt">
           <real value="0.0000000000"/>
         </waypoint>
         <waypoint time="1.96679604s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="2.43257809s" before="constant" after="halt">
+        <waypoint time="2.43257809s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="2.73257804s" before="halt" after="constant">
+        <waypoint time="2.93257809s" before="halt" after="constant">
           <real value="0.3000000000"/>
         </waypoint>
       </animated>
@@ -323,8 +390,8 @@ All Open Source animation</string>
     </param>
     <param name="origin">
       <vector>
-        <x>1.3400151730</x>
-        <y>0.1619639099</y>
+        <x>-0.0666949674</x>
+        <y>1.1698374748</y>
       </vector>
     </param>
     <param name="use_kerning">
@@ -343,16 +410,16 @@ All Open Source animation</string>
     </param>
     <param name="amount">
       <animated type="real">
-        <waypoint time="2.207196s" before="auto" after="auto">
+        <waypoint time="2.00719595s" before="constant" after="halt">
           <real value="0.0000000000"/>
         </waypoint>
         <waypoint time="2.50719595s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="2.8071959s" before="constant" after="halt">
+        <waypoint time="2.8071959s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="3.10719609s" before="halt" after="constant">
+        <waypoint time="3.3071959s" before="halt" after="constant">
           <real value="0.3000000000"/>
         </waypoint>
       </animated>
@@ -400,8 +467,8 @@ All Open Source animation</string>
     </param>
     <param name="origin">
       <vector>
-        <x>-2.1938169003</x>
-        <y>-1.2210049629</y>
+        <x>-2.6029005051</x>
+        <y>0.9125182033</y>
       </vector>
     </param>
     <param name="use_kerning">
@@ -420,16 +487,16 @@ All Open Source animation</string>
     </param>
     <param name="amount">
       <animated type="real">
-        <waypoint time="2.93257809s" before="auto" after="auto">
+        <waypoint time="2.73257804s" before="constant" after="halt">
           <real value="0.0000000000"/>
         </waypoint>
         <waypoint time="3.23257804s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="3.71288109s" before="constant" after="halt">
+        <waypoint time="3.71288109s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="4.0128808s" before="halt" after="constant">
+        <waypoint time="4.21288109s" before="halt" after="constant">
           <real value="0.3000000000"/>
         </waypoint>
       </animated>
@@ -477,8 +544,8 @@ All Open Source animation</string>
     </param>
     <param name="origin">
       <vector>
-        <x>-1.1890517473</x>
-        <y>-0.5092982054</y>
+        <x>0.8887774348</x>
+        <y>0.7587298155</y>
       </vector>
     </param>
     <param name="use_kerning">
@@ -497,16 +564,16 @@ All Open Source animation</string>
     </param>
     <param name="amount">
       <animated type="real">
-        <waypoint time="3.95499992s" before="auto" after="auto">
+        <waypoint time="3.75500011s" before="constant" after="halt">
           <real value="0.0000000000"/>
         </waypoint>
         <waypoint time="4.25500011s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="4.35500002s" before="constant" after="halt">
+        <waypoint time="4.35500002s" before="halt" after="halt">
           <real value="1.0000000000"/>
         </waypoint>
-        <waypoint time="4.65500021s" before="halt" after="constant">
+        <waypoint time="4.85500002s" before="halt" after="constant">
           <real value="0.3000000000"/>
         </waypoint>
       </animated>
@@ -554,8 +621,8 @@ All Open Source animation</string>
     </param>
     <param name="origin">
       <vector>
-        <x>-1.6105600595</x>
-        <y>0.2562069595</y>
+        <x>-2.1670331955</x>
+        <y>-0.1035533398</y>
       </vector>
     </param>
     <param name="use_kerning">
