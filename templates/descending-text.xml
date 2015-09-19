@@ -1,0 +1,136 @@
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="{{text}}">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>{{text}}</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="{{time2}}" before="{{transition}}" after="constant">
+                      <real guid="{{group2}}" value="{{value_middle}}"/>
+                    </waypoint>
+                    <waypoint time="{{time3}}" before="constant" after="{{transition}}">
+                      <real guid="{{group3}}" value="{{value_middle}}"/>
+                    </waypoint>
+                    <waypoint time="{{time1}}" before="constant" after="linear">
+                      <real guid="{{group1}}" value="{{value_before}}"/>
+                    </waypoint>
+                    <waypoint time="{{time4}}" before="linear" after="constant">
+                      <real guid="{{group4}}" value="{{value_after}}"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="{{time1}}" before="constant" after="linear">
+              <real guid="{{group1}}" value="{{value_before}}"/>
+            </waypoint>
+            <waypoint time="{{time2}}" before="{{transition}}" after="constant">
+              <real guid="{{group2}}" value="{{value_middle}}"/>
+            </waypoint>
+            <waypoint time="{{time3}}" before="constant" after="{{transition}}">
+              <real guid="{{group3}}" value="{{value_middle}}"/>
+            </waypoint>
+            <waypoint time="{{time4}}" before="linear" after="constant">
+              <real guid="{{group4}}" value="{{value_after}}"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>

@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<canvas version="1.0" width="480" height="270" xres="2834.645752" yres="2834.645752" view-box="-4.000000 2.250000 4.000000 -2.250000" antialias="1" fps="24.000" begin-time="0f" end-time="5s" bgcolor="0.500000 0.500000 0.500000 1.000000">
+  <name>Synfig Test for Keyframe import</name>
+  <meta name="background_first_color" content="0.880000 0.880000 0.880000"/>
+  <meta name="background_second_color" content="0.650000 0.650000 0.650000"/>
+  <meta name="background_size" content="15.000000 15.000000"/>
+  <meta name="grid_color" content="0.623529 0.623529 0.623529"/>
+  <meta name="grid_show" content="0"/>
+  <meta name="grid_size" content="0.250000 0.250000"/>
+  <meta name="grid_snap" content="0"/>
+  <meta name="guide_color" content="0.435294 0.435294 1.000000"/>
+  <meta name="guide_show" content="1"/>
+  <meta name="guide_snap" content="0"/>
+  <meta name="jack_offset" content="0.000000"/>
+  <meta name="onion_skin" content="0"/>
+  <meta name="onion_skin_future" content="0"/>
+  <meta name="onion_skin_past" content="1"/>
+  <keyframe time="0f" active="true">part one</keyframe>
+  <keyframe time="21f" active="true">part one - end</keyframe>
+  <keyframe time="1s" active="true">part two</keyframe>
+  <keyframe time="1s 20f" active="true">part two - end</keyframe>
+  <keyframe time="1s 23f" active="true">part three</keyframe>
+  <keyframe time="2s 10f" active="true">part three - end</keyframe>
+  <keyframe time="2s 12f" active="true">part four</keyframe>
+  <keyframe time="2s 19f" active="true">part four - end</keyframe>
+  <keyframe time="3s 5f" active="true">part five</keyframe>
+  <keyframe time="3s 17f" active="true">part five - end</keyframe>
+  <keyframe time="4s 6f" active="true">part six</keyframe>
+  <keyframe time="4s 8f" active="true">part six - end</keyframe>
+  <layer type="group" active="false" exclude_from_rendering="false" version="0.2" desc="bg">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0" static="true"/>
+    </param>
+    <param name="origin">
+      <vector>
+        <x>0.0000000000</x>
+        <y>0.0000000000</y>
+      </vector>
+    </param>
+    <param name="transformation">
+      <composite type="transformation">
+        <offset>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </offset>
+        <angle>
+          <angle value="0.000000"/>
+        </angle>
+        <skew_angle>
+          <angle value="0.000000"/>
+        </skew_angle>
+        <scale>
+          <vector>
+            <x>1.0000000000</x>
+            <y>1.0000000000</y>
+          </vector>
+        </scale>
+      </composite>
+    </param>
+    <param name="canvas">
+      <canvas>
+        <layer type="SolidColor" active="true" exclude_from_rendering="false" version="0.1">
+          <param name="z_depth">
+            <real value="0.0000000000"/>
+          </param>
+          <param name="amount">
+            <real value="1.0000000000"/>
+          </param>
+          <param name="blend_method">
+            <integer value="0" static="true"/>
+          </param>
+          <param name="color">
+            <color>
+              <r>1.000000</r>
+              <g>1.000000</g>
+              <b>1.000000</b>
+              <a>1.000000</a>
+            </color>
+          </param>
+        </layer>
+        <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="text">
+          <param name="z_depth">
+            <real value="0.0000000000"/>
+          </param>
+          <param name="amount">
+            <real value="0.9999999907"/>
+          </param>
+          <param name="blend_method">
+            <integer value="0"/>
+          </param>
+          <param name="text">
+            <string>this animation has been generated automatically 
+from an Audacity Labels file, with SynfigStudio.
+All Open Source animation</string>
+          </param>
+          <param name="color">
+            <color>
+              <r>0.000001</r>
+              <g>0.000001</g>
+              <b>0.000001</b>
+              <a>1.000000</a>
+            </color>
+          </param>
+          <param name="family">
+            <string>Sans Serif</string>
+          </param>
+          <param name="style">
+            <integer value="0"/>
+          </param>
+          <param name="weight">
+            <integer value="400"/>
+          </param>
+          <param name="compress">
+            <real value="1.0000000000"/>
+          </param>
+          <param name="vcompress">
+            <real value="1.0000000000"/>
+          </param>
+          <param name="size">
+            <vector>
+              <x>0.1333333403</x>
+              <y>0.1333333403</y>
+            </vector>
+          </param>
+          <param name="orient">
+            <vector>
+              <x>0.5000000000</x>
+              <y>0.5000000000</y>
+            </vector>
+          </param>
+          <param name="origin">
+            <vector>
+              <x>0.9415920973</x>
+              <y>-1.7408642769</y>
+            </vector>
+          </param>
+          <param name="use_kerning">
+            <bool value="true"/>
+          </param>
+          <param name="grid_fit">
+            <bool value="false"/>
+          </param>
+          <param name="invert">
+            <bool value="false"/>
+          </param>
+        </layer>
+      </canvas>
+    </param>
+    <param name="time_offset">
+      <time value="0s"/>
+    </param>
+    <param name="children_lock">
+      <bool value="false"/>
+    </param>
+    <param name="outline_grow">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="z_range">
+      <bool value="false" static="true"/>
+    </param>
+    <param name="z_range_position">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="z_range_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="z_range_blur">
+      <real value="0.0000000000"/>
+    </param>
+  </layer>
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part one">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>part one</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="0s" before="constant" after="constant">
+                      <real guid="7A3ABDE6010B77CE4B7AE9702B9730D6" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="0.89999998s" before="constant" after="halt">
+                      <real guid="302E3973BF815190B4AA30000000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="1.39999998s" before="linear" after="constant">
+                      <real value="1.0000000000"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="0s" before="constant" after="constant">
+              <real guid="99471C1D22CF4EDB066A45F6C5DECCFF" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="0.89999998s" before="constant" after="halt">
+              <real value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="1.39999998s" before="linear" after="constant">
+              <real value="1.0000000000"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part two">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>part two</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="0.5s" before="auto" after="auto">
+                      <real value="-1.0000000000"/>
+                    </waypoint>
+                    <waypoint time="1s" before="halt" after="constant">
+                      <real value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="1.871346s" before="constant" after="linear">
+                      <real guid="312E383731333436000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="2.371346s" before="linear" after="constant">
+                      <real guid="322E333731333436000000730000000C" value="1.0000000000"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="0.5s" before="constant" after="linear">
+              <real value="-1.0000000000"/>
+            </waypoint>
+            <waypoint time="1s" before="halt" after="constant">
+              <real value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="1.871346s" before="constant" after="halt">
+              <real guid="312E383731333436000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="2.371346s" before="linear" after="constant">
+              <real guid="322E333731333436000000730000000C" value="1.0000000000"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part three">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>part three</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="1.46679604s" before="auto" after="auto">
+                      <real guid="312E343636373936000000730000000C" value="-1.0000000000"/>
+                    </waypoint>
+                    <waypoint time="1.96679604s" before="halt" after="constant">
+                      <real guid="312E393636373936000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="2.43257809s" before="constant" after="linear">
+                      <real guid="322E343332353738000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="2.93257809s" before="linear" after="constant">
+                      <real guid="322E393332353738000000730000000C" value="1.0000000000"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="1.46679604s" before="constant" after="linear">
+              <real guid="312E343636373936000000730000000C" value="-1.0000000000"/>
+            </waypoint>
+            <waypoint time="1.96679604s" before="halt" after="constant">
+              <real guid="312E393636373936000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="2.43257809s" before="constant" after="halt">
+              <real guid="322E343332353738000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="2.93257809s" before="linear" after="constant">
+              <real guid="322E393332353738000000730000000C" value="1.0000000000"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part four">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>part four</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="2.00719595s" before="auto" after="auto">
+                      <real guid="322E303037313936000000730000000C" value="-1.0000000000"/>
+                    </waypoint>
+                    <waypoint time="2.50719595s" before="halt" after="constant">
+                      <real guid="322E353037313936000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="2.8071959s" before="constant" after="linear">
+                      <real guid="322E383037313936000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="3.3071959s" before="linear" after="constant">
+                      <real guid="332E333037313936000000730000000C" value="1.0000000000"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="2.00719595s" before="constant" after="linear">
+              <real guid="322E303037313936000000730000000C" value="-1.0000000000"/>
+            </waypoint>
+            <waypoint time="2.50719595s" before="halt" after="constant">
+              <real guid="322E353037313936000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="2.8071959s" before="constant" after="halt">
+              <real guid="322E383037313936000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="3.3071959s" before="linear" after="constant">
+              <real guid="332E333037313936000000730000000C" value="1.0000000000"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part five">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>part five</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="2.73257804s" before="auto" after="auto">
+                      <real guid="322E373332353738000000730000000C" value="-1.0000000000"/>
+                    </waypoint>
+                    <waypoint time="3.23257804s" before="halt" after="constant">
+                      <real guid="332E323332353738000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="3.71288109s" before="constant" after="linear">
+                      <real guid="332E373132383831000000730000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="4.21288109s" before="linear" after="constant">
+                      <real guid="342E323132383831000000730000000C" value="1.0000000000"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="2.73257804s" before="constant" after="linear">
+              <real guid="322E373332353738000000730000000C" value="-1.0000000000"/>
+            </waypoint>
+            <waypoint time="3.23257804s" before="halt" after="constant">
+              <real guid="332E323332353738000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="3.71288109s" before="constant" after="halt">
+              <real guid="332E373132383831000000730000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="4.21288109s" before="linear" after="constant">
+              <real guid="342E323132383831000000730000000C" value="1.0000000000"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
+  <layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="part six">
+    <param name="z_depth">
+      <real value="0.0000000000"/>
+    </param>
+    <param name="amount">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="blend_method">
+      <integer value="0"/>
+    </param>
+    <param name="text">
+      <string>part six</string>
+    </param>
+    <param name="color">
+      <color>
+        <r>0.033015</r>
+        <g>0.015800</g>
+        <b>0.203155</b>
+        <a>1.000000</a>
+      </color>
+    </param>
+    <param name="family">
+      <string>Sans Serif</string>
+    </param>
+    <param name="style">
+      <integer value="0"/>
+    </param>
+    <param name="weight">
+      <integer value="400"/>
+    </param>
+    <param name="compress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="vcompress">
+      <real value="1.0000000000"/>
+    </param>
+    <param name="size">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.3333333433</x>
+            <y>0.3333333433</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <scale type="vector">
+            <link>
+              <vector>
+                <x>-0.5000000000</x>
+                <y>-0.5000000000</y>
+              </vector>
+            </link>
+            <scalar>
+              <power type="real">
+                <base>
+                  <animated type="real">
+                    <waypoint time="3.75500011s" before="auto" after="auto">
+                      <real guid="332E373500003573B4AA30000000000C" value="-1.0000000000"/>
+                    </waypoint>
+                    <waypoint time="4.25500011s" before="halt" after="constant">
+                      <real guid="342E323500003573B4AA30000000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="4.35500002s" before="constant" after="linear">
+                      <real guid="342E333500003573B4AA30000000000C" value="0.0000000000"/>
+                    </waypoint>
+                    <waypoint time="4.85500002s" before="linear" after="constant">
+                      <real guid="342E383500003573B4AA30000000000C" value="1.0000000000"/>
+                    </waypoint>
+                  </animated>
+                </base>
+                <power>
+                  <real value="2.0000000000"/>
+                </power>
+                <epsilon>
+                  <real value="0.0000010000"/>
+                </epsilon>
+                <infinite>
+                  <real value="999999.0000000000"/>
+                </infinite>
+              </power>
+            </scalar>
+          </scale>
+        </rhs>
+        <scalar>
+          <real value="1.0000000000"/>
+        </scalar>
+      </add>
+    </param>
+    <param name="orient">
+      <vector>
+        <x>0.5000000000</x>
+        <y>0.5000000000</y>
+      </vector>
+    </param>
+    <param name="origin">
+      <add type="vector">
+        <lhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>0.0000000000</y>
+          </vector>
+        </lhs>
+        <rhs>
+          <vector>
+            <x>0.0000000000</x>
+            <y>-2.5000000000</y>
+          </vector>
+        </rhs>
+        <scalar>
+          <animated type="real">
+            <waypoint time="3.75500011s" before="constant" after="linear">
+              <real guid="332E373500003573B4AA30000000000C" value="-1.0000000000"/>
+            </waypoint>
+            <waypoint time="4.25500011s" before="halt" after="constant">
+              <real guid="342E323500003573B4AA30000000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="4.35500002s" before="constant" after="halt">
+              <real guid="342E333500003573B4AA30000000000C" value="0.0000000000"/>
+            </waypoint>
+            <waypoint time="4.85500002s" before="linear" after="constant">
+              <real guid="342E383500003573B4AA30000000000C" value="1.0000000000"/>
+            </waypoint>
+          </animated>
+        </scalar>
+      </add>
+    </param>
+    <param name="use_kerning">
+      <bool value="true"/>
+    </param>
+    <param name="grid_fit">
+      <bool value="false"/>
+    </param>
+    <param name="invert">
+      <bool value="false"/>
+    </param>
+  </layer>
+</canvas>
