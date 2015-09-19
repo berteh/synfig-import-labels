@@ -10,6 +10,7 @@ GENERATE_OBJECTS = True             # set to True to generate objects (such as t
 #
 # settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False.
 TEMPLATE_NAME = "popping-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
+SPLIT_WORDS = True				# split each word in a separate object
 ANIMATION_INTERVAL = 0.3        # interval (before and after the label time) used for transition, in seconds. default is 0.5
 RANDOM_ORIGIN = 70              # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])
 WAYPOINT_TYPE = "halt"          # one of: constant, auto, linear, clamped, halt

@@ -142,37 +142,47 @@ def process(sifin_filename, labels_filename, sifout_filename):
 
 		for i,t in enumerate(texts):
 
-			if (r>0):
-				ox = random.uniform(minx, maxx)*r/100
-				oy = random.uniform(miny, maxy)*r/100
+			if s.SPLIT_WORDS:
+				objects = t.split() # opt add separator as argument, space by default.
+				objC = len(objects)
+				objTimes = [starts[i] + (ends[i]-starts[i]) * j for j,word in enumerate(objects)]
 			else:
-				ox = 0
-				oy = 0
+				objects = [t]
+				objTimes = [start[i]]
 
-			values = {
-				'text':t,
-				'value_before':s.VALUE_BEFORE,
-				'value_middle':s.VALUE_MIDDLE,				
-				'value_after':s.VALUE_AFTER,
-				'time1':str(max(b,starts[i]-d))+'s',
-				'time2':str(starts[i])+'s',
-				'time3':str(ends[i])+'s',
-				'time4':str(min(ends[i]+d,e))+'s',
-				'transition':s.WAYPOINT_TYPE,
-				'origin_x':ox,
-				'origin_y':oy
-			}
-			values.update({
-				'group1':values['time1'].encode("hex"),
-				'group2':values['time2'].encode("hex"),
-				'group3':values['time3'].encode("hex"),
-				'group4':values['time4'].encode("hex")
-				})
-		
-			print "1 object is being added to canvas for '%s'"%t
-			l = renderer.render_name(s.TEMPLATE_NAME, values)
-			layer = ET.fromstring(l)
-			canvas.append(layer)	
+			#generate object, turn into function
+			for j,o in enumerate(objects):
+				if (r>0):
+					ox = random.uniform(minx, maxx)*r/100
+					oy = random.uniform(miny, maxy)*r/100
+				else:
+					ox = 0
+					oy = 0
+
+				values = {
+					'text':o,
+					'value_before':s.VALUE_BEFORE,
+					'value_middle':s.VALUE_MIDDLE,				
+					'value_after':s.VALUE_AFTER,
+					'time1':str(max(b,starts[i]-d))+'s',
+					'time2':str(objTimes[j])+'s',
+					'time3':str(ends[i])+'s',
+					'time4':str(min(ends[i]+d,e))+'s',
+					'transition':s.WAYPOINT_TYPE,
+					'origin_x':ox,
+					'origin_y':oy
+				}
+				values.update({
+					'group1':values['time1'].encode("hex"),
+					'group2':values['time2'].encode("hex"),
+					'group3':values['time3'].encode("hex"),
+					'group4':values['time4'].encode("hex")
+					})
+			
+				print "1 object is being added to canvas for '%s'"%t
+				l = renderer.render_name(s.TEMPLATE_NAME, values)
+				layer = ET.fromstring(l)
+				canvas.append(layer)	
 
 	# write modified xml tree to the same sif file
 	tree.write(sifout_filename, encoding="UTF-8", xml_declaration=True)
