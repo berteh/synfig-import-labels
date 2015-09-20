@@ -41,6 +41,7 @@ import xml.etree.ElementTree as ET
 import re
 import settings as s
 import random
+#import pystache  # only imported below if s.GENERATE_OBJECTS is True.
 
 def secFrames2sec(fps, secFrame): #convert Synfig "Xs Yf" time notation to <float>s in seconds.
 	pattern  = "^((\d+)s)?(\s)?((\d+)f)?$"
@@ -137,6 +138,7 @@ def process(sifin_filename, labels_filename, sifout_filename):
 		e = secFrames2sec(fps, canvas.get("end-time")) # upper bound for time
 		d = s.ANIMATION_INTERVAL
 		r = s.RANDOM_ORIGIN
+		z = 999934569.1341 # basis for groupid generation, any float > 0 would do.
 		view = canvas.get("view-box").split()		
 		[minx, maxy, maxx, miny] = [float(elem) for elem in view]
 
@@ -159,6 +161,11 @@ def process(sifin_filename, labels_filename, sifout_filename):
 					ox = 0
 					oy = 0
 
+				t1 = max(b,starts[i]-d)
+				t2 = objTimes[j]
+				t3 = ends[i]
+				t4 = min(ends[i]+d,e)
+
 				values = {
 					'text':o,
 					'value_before':s.VALUE_BEFORE,
@@ -166,19 +173,19 @@ def process(sifin_filename, labels_filename, sifout_filename):
 					'loop_before':s.LOOP_BEFORE,
 					'loop_middle':s.LOOP_MIDDLE,
 					'loop_after':s.LOOP_AFTER,
-					'time1':str(max(b,starts[i]-d))+'s',
-					'time2':str(objTimes[j])+'s',
-					'time3':str(ends[i])+'s',
-					'time4':str(min(ends[i]+d,e))+'s',
+					'time1':str(t1)+'s',
+					'time2':str(t2)+'s',
+					'time3':str(t3)+'s',
+					'time4':str(t4)+'s',
 					'transition':s.WAYPOINT_TYPE,
 					'origin_x':ox,
 					'origin_y':oy
 				}
 				values.update({
-					'group1':values['time1'].encode("hex"),
-					'group2':values['time2'].encode("hex"),
-					'group3':values['time3'].encode("hex"),
-					'group4':values['time4'].encode("hex")
+					'group1':(z+t1).hex()[4:-4],
+					'group2':(z+t2).hex()[4:-4],
+					'group3':(z+t3).hex()[4:-4],
+					'group4':(z+t4).hex()[4:-4]
 					})
 			
 				#print "1 object is being added to canvas for '%s'"%t
