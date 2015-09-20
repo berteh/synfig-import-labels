@@ -30,16 +30,17 @@ Using a simple white background and importing a set of 6 text lines with their t
 ![example in synfig](http://i61.tinypic.com/fa1x3.jpg)
 
 ## Use
-from the command-line: (only on sif files, unzip sifz manually before)
 
-	python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
-
-or from within synfig:   
+Run the script from within synfig:   
 
 1. open your synfig project, save it as .sif (Synfig Plug-ins don't work on the default .sifz format for now)
 1. run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
 
-to create your own timed labels file you can:
+or from the command-line: (only on sif files, unzip sifz manually before)
+
+	python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
+
+To create your own timed labels file you can:
 
 1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
 1. export your labels via Tracks > Edit Labels > export, in Audacity.
@@ -77,9 +78,9 @@ IMPORT_END = True                   # set to True to import keyframe for end of 
 START_SUFFIX = ""                   # suffix to add to a label-start keyframe, to distinguish it from label-end frame
 END_SUFFIX = " - end"               # suffix to add to a label-end keyframe, to distinguish it from label-start frame
 OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False   # set to True to replace keyframe with exact same description
-GENERATE_OBJECTS = True             # set to True to generate objects (such as text layers) for each label
+GENERATE_OBJECTS = True             # set to True to generate objects (typically text layers) for each label
 #
-# settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False.
+# settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False. Some settings apply only to some templates.
 TEMPLATE_NAME = "popping-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
 SPLIT_WORDS = False             # split each word in a separate object
 WAYPOINT_TYPE = "halt"          # one of: constant, auto, linear, clamped, halt
@@ -90,3 +91,17 @@ ANIMATION_INTERVAL = 0.5        # interval (before and after the label time) use
 
 ## Support
 Preferably use github's [issues tracker](https://github.com/berteh/import-audacity-labels-keyframes/issues) for bug reports, feature requests and contributing to this code.
+
+## Changelog
+
+- v0.1 - August 2014 - keyframe generation
+- v0.2 - September 2015 - objects generation
+
+## Licence
+GNU-GPL v2, same as [Synfig Studio](http://synfig.org).
+
+This package is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA or visit http://www.gnu.org/licenses/gpl.html
