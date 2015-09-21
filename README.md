@@ -1,4 +1,5 @@
-# Import Audacity Labels as Keyframes and/or Kinetic Typography (artistic subtitles)
+# Import Labels and Timings in Synfig (Open Source 2D Animation Studio)
+##  - aka generate Keyframes and Kinetic Typography (artistic subtitles)
 
 A [Synfig](http://synfig.org) plug-in to create time reference and/or artistic kinetic text effects in Synfig, from [Audacity](http://audacity.sourceforge.net/) track labels (aka subtitles).
 
