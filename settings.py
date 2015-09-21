@@ -1,6 +1,6 @@
 # configuration for keyframes import
 #
-AUDACITY_LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory
+LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory
 IMPORT_START = True                 # set to True to import keyframe for start of label
 IMPORT_END = True                   # set to True to import keyframe for end of label
 START_SUFFIX = ""                   # suffix to add to a label-start keyframe, to distinguish it from label-end frame
@@ -27,5 +27,5 @@ LOOP_AFTER = "0.3"
 VALUE_BEFORE = "-1.0"
 VALUE_MIDDLE = "0.0"
 VALUE_AFTER = "1.0"
-#location for plugin templates, as a list of directories
-TEMPATE_DIRS = ["templates","/opt/synfig/share/synfig/plugins/3synfig-import-labels/templates/"]
+#location for plugin templates
+TEMPLATE_DIR = "templates"
