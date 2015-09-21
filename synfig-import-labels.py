@@ -11,7 +11,7 @@
 # usage
 #
 # from command line (only on sif files, need to unzip sifz manually)
-#      python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
+#      python synfig-import-labels.py in.sif (labels.txt (out.sif))
 #
 # from synfigstudio (only on sif files, need to save as sif in synfig first)
 #      caret/right-click > Plug-Ins > Import Audacity Labels as Keyframes
@@ -33,7 +33,7 @@
 #
 #------------------------------------------------
 # Feel free to improve the code below and share your modifications at
-# https://github.com/berteh/import-audacity-labels-keyframes/issues
+# https://github.com/berteh/synfig-import-labels/issues
 
 import os
 import sys
@@ -128,7 +128,9 @@ def process(sifin_filename, labels_filename, sifout_filename):
 	if s.GENERATE_OBJECTS:
 		try:
 			import pystache
-			renderer = pystache.Renderer(search_dirs="templates", file_extension="xml") #todo preferably parse template only once before loop.
+			import pystache.common.TemplateNotFoundError
+
+			renderer = pystache.Renderer(search_dirs=s.TEMPLATE_DIRS, file_extension="xml") #todo preferably parse template only once before loop.
 
 		except ImportError:
 			#print "Could not load template engine for objects generation. Please verify you have both a pystache and templates subdirectories, or re-download & re-install this plugin."
@@ -189,7 +191,11 @@ def process(sifin_filename, labels_filename, sifout_filename):
 					})
 			
 				#print "1 object is being added to canvas for '%s'"%t
+				#try: TODO: give feedback to user if template not found
 				l = renderer.render_name(s.TEMPLATE_NAME, values)
+				#except TemplateNotFoundError:
+				#	sys.exit("Could not find template, please check configuration of 'TEMPLATE_DIRS' in settings.py")
+
 				layer = ET.fromstring(l)
 				canvas.append(layer)	
 

@@ -44,7 +44,7 @@ Run the script from within synfig:
 
 or from the command-line: (only on sif files, unzip sifz manually before)
 
-	python import-audacity-labels-keyframes.py in.sif (labels.txt (out.sif))
+	python synfig-import-labels.py in.sif (labels.txt (out.sif))
 
 To create your own timed labels file you can:
 
@@ -65,9 +65,9 @@ A tutorial will be written on creating kynetic typographies one day... but I (no
 
 ## Install
 
-Decompress [plugin archive](https://github.com/berteh/import-audacity-labels-keyframes/archive/master.zip ) into your synfig plugins directory (in linux: home/-user-/.synfig/plugins)
+Decompress [plugin archive](https://github.com/berteh/synfig-import-labels/archive/master.zip ) into your synfig plugins directory (in linux: home/-user-/.synfig/plugins)
 
-Another option is to clone [this repository](https://github.com/berteh/import-audacity-labels-keyframes.git) in the same location.
+Another option is to clone [this repository](https://github.com/berteh/synfig-import-labels.git) in the same location.
 
 Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
 
@@ -96,7 +96,7 @@ ANIMATION_INTERVAL = 0.5        # interval (before and after the label time) use
 ```
 
 ## Support
-Preferably use github's [issues tracker](https://github.com/berteh/import-audacity-labels-keyframes/issues) for bug reports, feature requests and contributing to this code.
+Preferably use github's [issues tracker](https://github.com/berteh/synfig-import-labels/issues) for bug reports, feature requests and contributing to this code.
 
 ## Changelog
 

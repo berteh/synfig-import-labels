@@ -27,3 +27,5 @@ LOOP_AFTER = "0.3"
 VALUE_BEFORE = "-1.0"
 VALUE_MIDDLE = "0.0"
 VALUE_AFTER = "1.0"
+#location for plugin templates, as a list of directories
+TEMPATE_DIRS = ["templates","/opt/synfig/share/synfig/plugins/3synfig-import-labels/templates/"]
