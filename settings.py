@@ -9,7 +9,7 @@ OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False   # set to True to replace keyframe w
 GENERATE_OBJECTS = True             # set to True to generate objects (such as text layers) for each label
 #
 # settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False.
-TEMPLATE_NAME = "popping-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
+TEMPLATE_NAME = "appearing-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
 SPLIT_WORDS = False				# split each word in a separate object
 WAYPOINT_TYPE = "halt"          # one of: constant, auto, linear, clamped, halt
 RANDOM_ORIGIN = 70              # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])

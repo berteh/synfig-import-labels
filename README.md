@@ -12,9 +12,9 @@ The generated kinetic texts objects is a great basis for beautiful typographic a
 
 Different Effects are readily available, and it is easy to create new ones:
 
-**popping text**
+**appearing (& disappearing) text**
 
-![popping text](test/popping-text_result.gif)
+![appearing (& disappearing) text](test/appearing-text_result.gif)
 
 **revealing text**
 
@@ -23,6 +23,11 @@ Different Effects are readily available, and it is easy to create new ones:
 **descending text**
 
 ![descending text](test/descending-text_result.gif)
+
+
+**text flying-in from left**
+
+![text flying-in from left](test/fromleft-text_result.gif)
 
 Got other ideas or templates? add them to the [wiki](/wiki) or [create a pull request](https://help.github.com/articles/using-pull-requests/) to share them!
 
@@ -81,7 +86,7 @@ OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False   # set to True to replace keyframe w
 GENERATE_OBJECTS = True             # set to True to generate objects (typically text layers) for each label
 #
 # settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False. Some settings apply only to some templates.
-TEMPLATE_NAME = "popping-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
+TEMPLATE_NAME = "appearing-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "appearing-text"
 SPLIT_WORDS = False             # split each word in a separate object
 WAYPOINT_TYPE = "halt"          # one of: constant, auto, linear, clamped, halt
 RANDOM_ORIGIN = 70              # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])

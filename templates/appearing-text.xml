@@ -1,4 +1,4 @@
-<layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="{{text}}">
+<layer type="text" active="true" exclude_from_rendering="false" version="0.2" desc="{{text}} - popping">
     <param name="z_depth">
       <real value="0.0000000000"/>
     </param>

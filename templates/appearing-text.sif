@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <canvas version="1.0" width="480" height="270" xres="2834.645752" yres="2834.645752" view-box="-4.000000 2.250000 4.000000 -2.250000" antialias="1" fps="24.000" begin-time="10f" end-time="2s 17f" bgcolor="0.500000 0.500000 0.500000 1.000000">
-  <name>Popping text template for Keyframe import in SynfigStudio</name>
+  <name>Appearing text template for Keyframe import in SynfigStudio</name>
   <meta name="background_first_color" content="0.880000 0.880000 0.880000"/>
   <meta name="background_second_color" content="0.650000 0.650000 0.650000"/>
   <meta name="background_size" content="15.000000 15.000000"/>
