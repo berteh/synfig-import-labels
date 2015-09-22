@@ -1,7 +1,7 @@
 # Import Labels and Timings in Synfig (Open Source 2D Animation Studio)
 ##  - aka generate Keyframes and Kinetic Typography (artistic subtitles)
 
-A [Synfig](http://synfig.org) plug-in to create time reference and/or artistic kinetic text effects in Synfig, from [Audacity](http://audacity.sourceforge.net/) track labels (aka subtitles).
+A [Synfig](http://synfig.org) plug-in to create time reference and/or artistic kinetic text effects in Synfig, from [Audacity](http://audacity.sourceforge.net/) track labels (aka subtitles) or excel/openoffice data.
 
 Synfig Studio is a free and open-source 2D animation software, designed as powerful industrial-strength solution for creating film-quality animation using a vector and bitmap artwork.
 
@@ -40,7 +40,7 @@ Using a simple white background and importing a set of 6 text lines with their t
 Run the script from within synfig:   
 
 1. open your synfig project, save it as .sif (Synfig Plug-ins don't work on the default .sifz format for now)
-1. run the plugin at _> Plug-Ins > Import Audacity Labels as Keyframes_
+1. run the plugin at _> Plug-Ins > Import Labels and Timings as Keyframes_
 
 or from the command-line: (only on sif files, unzip sifz manually before)
 
@@ -56,6 +56,8 @@ or simply use Notepad and create a table with 3 "columns": _start time (in sec)_
     0.500	1.50	first sentence showing for 1 second
     1.50	1.90	cool !
     2.40	3.2784	your imagination is the limit !
+
+or use any spreadsheet software that is able to export to tsv (_tab separated value_ file), such as OpenOffice or Excel.
 
 ## Video Tutorial
 
@@ -78,7 +80,7 @@ edit `settings.py` for customisation:
 ```python
 # configuration for keyframes import
 #
-LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory
+LABELS_FILE = "labels.txt" 			# labels file name, must be located in your synfig project directory
 IMPORT_START = True                 # set to True to import keyframe for start of label
 IMPORT_END = True                   # set to True to import keyframe for end of label
 START_SUFFIX = ""                   # suffix to add to a label-start keyframe, to distinguish it from label-end frame
