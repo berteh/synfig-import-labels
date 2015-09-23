@@ -47,7 +47,7 @@ You can add, optionally, add a 4th column with the name of ``template`` to use f
 
 You can use any spreadsheet software that is able to export to tsv (_tab separated value_ file), such as OpenOffice or Excel, just make sure to save as UTF-8 if you need proper accents supports.
 
-Not mentioning any ``template`` column will simply use the default template (see [Configuration](##configuration))
+Not mentioning any ``template`` column will simply use the default template (see [Configuration](#configuration))
 
 ## Video Tutorial
 
@@ -72,7 +72,7 @@ edit `settings.py` for customisation:
 #
 LABELS_FILE = "labels.txt" 	# audacity labels file name, must be located in your synfig project directory
 IMPORT_START = True         # set to True to import keyframe for start of label
-IMPORT_END = False           # set to True to import keyframe for end of label
+IMPORT_END = False          # set to True to import keyframe for end of label
 START_SUFFIX = ""           # suffix to add to a label-start keyframe, to distinguish it from label-end frame
 END_SUFFIX = " - end"       # suffix to add to a label-end keyframe, to distinguish it from label-start frame
 OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False   # set to True to replace keyframe with exact same description
@@ -84,7 +84,8 @@ SPLIT_WORDS = False			# split each word in a separate object
 WAYPOINT_TYPE = "halt"      # one of: constant, auto, linear, clamped, halt
 RANDOM_ORIGIN = 70          # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])
 ANIMATION_INTERVAL = 0.5    # interval (before and after the label time) used for (in & out) transition, in seconds. default is 0.5
-#```
+#
+```
 
 ## Contribution
 
