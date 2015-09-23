@@ -9,30 +9,15 @@ The generated time reference (keyframes) is great for synchronizing animation wi
 
 The generated kinetic texts objects is a great basis for beautiful typographic animations, and can be customized easily to achieve your prefered effect(s).
 
-## Gallery
+## Result
 
-Different Effects are readily available, and it is easy to create new ones:
-
-**appearing (& disappearing) text**
-
-![appearing (& disappearing) text](test/appearing-text_result.gif)
-
-**revealing text**
-
-![revealing text](test/revealing-text_result.gif)
-
-**descending text**
+Different effects are readily available, and it is (rather) easy to create new ones. Check out [our gallery](https://github.com/berteh/synfig-import-labels/wiki/Gallery) for many examples, a typical one is descending text:
 
 ![descending text](test/descending-text_result.gif)
 
+A **demo animation** illustrating many more effects at once is online at https://www.youtube.com/watch?v=F4pDivKQf-g
 
-**text flying-in from left**
-
-![text flying-in from left](test/fromleft-text_result.gif)
-
-Got other ideas or templates? add them to the [wiki](/wiki) or [create a pull request](https://help.github.com/articles/using-pull-requests/) to share them!
-
-Using a simple white background and importing a set of 6 text lines with their timings the following animation is generated automatically: automatic keyframes (top-right), automatic objects (bottom-right) auto-animated (bottom-left)
+Using a simple white background and importing a set of 6 text lines with their timings the following is generated automatically: automatic keyframes (top-right), automatic objects (bottom-right) auto-animated (bottom-left), and ready to be fine-tuned in Synfig before exporting for the world to see ;)
 ![example in synfig](http://i61.tinypic.com/fa1x3.jpg)
 
 ## Use
@@ -51,13 +36,18 @@ To create your own timed labels file you can:
 1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
 1. export your labels via Tracks > Edit Labels > export, in Audacity.
 
-or simply use Notepad and create a table with 3 "columns": _start time (in sec)_ ``tab`` _end time (in sec)_``tab`` _text (single line)_, save it as _labels.txt_. **No titles** in the first row, just the data, a bit like:
+or simply use Notepad and create a table with 3 "columns": _start time (in sec)_ ``tab`` _end time (in sec)_``tab`` _text (single line)_.
+You can add, optionally, add a 4th column with the name of ``template`` to use for this text line and the following ones. Save the file as _labels.txt_ in the directory of your sif Synfig file project. Titles in the first row are optional, just the data will do just fine, but if you use titles, they must be _exactly_ the following:
 
-    0.500	1.50	first sentence showing for 1 second
+    start	stop	text	template
+    0.500	1.50	first sentence showing for 1 second 	descending-text
     1.50	1.90	cool !
-    2.40	3.2784	your imagination is the limit !
+    2.40	3.2784	your imagination is the limit ! 	revealing-text
 
-or use any spreadsheet software that is able to export to tsv (_tab separated value_ file), such as OpenOffice or Excel.
+
+You can use any spreadsheet software that is able to export to tsv (_tab separated value_ file), such as OpenOffice or Excel, just make sure to save as UTF-8 if you need proper accents supports.
+
+Not mentioning any ``template`` column will simply use the default template (see [Configuration](##configuration))
 
 ## Video Tutorial
 
@@ -80,22 +70,26 @@ edit `settings.py` for customisation:
 ```python
 # configuration for keyframes import
 #
-LABELS_FILE = "labels.txt" 			# labels file name, must be located in your synfig project directory
-IMPORT_START = True                 # set to True to import keyframe for start of label
-IMPORT_END = True                   # set to True to import keyframe for end of label
-START_SUFFIX = ""                   # suffix to add to a label-start keyframe, to distinguish it from label-end frame
-END_SUFFIX = " - end"               # suffix to add to a label-end keyframe, to distinguish it from label-start frame
+LABELS_FILE = "labels.txt" 	# audacity labels file name, must be located in your synfig project directory
+IMPORT_START = True         # set to True to import keyframe for start of label
+IMPORT_END = False           # set to True to import keyframe for end of label
+START_SUFFIX = ""           # suffix to add to a label-start keyframe, to distinguish it from label-end frame
+END_SUFFIX = " - end"       # suffix to add to a label-end keyframe, to distinguish it from label-start frame
 OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False   # set to True to replace keyframe with exact same description
-GENERATE_OBJECTS = True             # set to True to generate objects (typically text layers) for each label
+GENERATE_OBJECTS = True     # set to True to generate objects (such as text layers) for each label
 #
-# settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False. Some settings apply only to some templates.
-TEMPLATE_NAME = "appearing-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "appearing-text"
-SPLIT_WORDS = False             # split each word in a separate object
-WAYPOINT_TYPE = "halt"          # one of: constant, auto, linear, clamped, halt
-RANDOM_ORIGIN = 70              # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])
-#for transitions with a preliminary/conclusion
-ANIMATION_INTERVAL = 0.5        # interval (before and after the label time) used for (in & out) transition, in seconds. default is 0.5
-```
+# settings below only matter to object generation. don't bother if GENERATE_OBJECTS is False.
+TEMPLATE_NAME = "appearing-text"  # the name of template you want to use. must be located in templates/ subdirectory, with .xml extension. default is "popping-text"
+SPLIT_WORDS = False			# split each word in a separate object
+WAYPOINT_TYPE = "halt"      # one of: constant, auto, linear, clamped, halt
+RANDOM_ORIGIN = 70          # set to a percentage [0-100] to randomize the object origin in the whole document viewbox (0 will stack them all at [0,0])
+ANIMATION_INTERVAL = 0.5    # interval (before and after the label time) used for (in & out) transition, in seconds. default is 0.5
+#```
+
+## Contribution
+
+Got other ideas or templates? add them to the [wiki](/wiki/Gallery) or [create a pull request](https://help.github.com/articles/using-pull-requests/) to share them!
+
 
 ## Support
 Preferably use github's [issues tracker](https://github.com/berteh/synfig-import-labels/issues) for bug reports, feature requests and contributing to this code.
