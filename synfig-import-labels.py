@@ -10,27 +10,16 @@
 #
 # usage
 #
-# from command line (only on sif files, need to unzip sifz manually)
-#      python synfig-import-labels.py in.sif (labels.txt (out.sif))
+# from synfigstudio (open the project you want to import to)
+#      caret/right-click > Plug-Ins > Import Labels and Timings
 #
-# from synfigstudio (only on sif files, need to save as sif in synfig first)
-#      caret/right-click > Plug-Ins > Import Audacity Labels as Keyframes
+# from command line
+#      python synfig-import-labels.py in.sifz (labels.txt (out.sifz))
+#
 #
 #------------------------------------------------
 # installation: see http://wiki.synfig.org/wiki/Doc:Plugins
 # 
-# decompress plugin archive into home/<user>/.synfig/plugins
-#------------------------------------------------
-#
-# configuration is done by editing settings.py, the following options are available:
-#
-# LABELS_FILE = "labels.txt" # audacity labels file name, must be located in your synfig project directory - TODO get filename from synfig filechooser or drag-n-drop: HOW?
-# IMPORT_START = True               # set to True to import keyframe for start of label
-# IMPORT_END = False                # set to True to import keyframe for end of label
-# START_SUFFIX = ""                 # suffix to add to a label-start keyframe, to distinguish it from label-end frame
-# END_SUFFIX = " - end"             # suffix to add to a label-end keyframe, to distinguish it from label-start frame
-# OVERWRITE_KEYFRAMES_WITH_SAME_NAME = False # set to True to replace keyframe with exact same description
-#
 #------------------------------------------------
 # Feel free to improve the code below and share your modifications at
 # https://github.com/berteh/synfig-import-labels/issues
@@ -43,6 +32,7 @@ import re
 import settings as s
 import random
 import csv
+import gzip
 #import pystache  # imported below if s.GENERATE_OBJECTS is True.
 
 # fix for Synfig seemingly not addding plugin dir to import path
@@ -88,8 +78,9 @@ def process(sifin_filename, labels_filepath, sifout_filename):
         if(len(data) < 1):
             sys.exit("Data file %s contains no data or could not be parsed, nothing to generate. Halting."%(labels_filepath))          
 
-    # read input sif file as xml
-    tree = ET.parse(sifin_filename)
+    # read input sif(z) file as xml
+    gz_input = gzip.GzipFile(sifin_filename) # handles compressed and uncompressed data alike.
+    tree = ET.parse(gz_input)
     canvas = tree.getroot()
     fps = int(float(canvas.get("fps")))
     
@@ -220,9 +211,10 @@ def process(sifin_filename, labels_filepath, sifout_filename):
                 layer = ET.fromstring(l)
                 canvas.append(layer)  
                 print("added object '%s'"%o)
-          
 
-    # write modified xml tree to the same sif file
+    # write modified xml tree
+    if(sifout_filename[-4:] == "sifz"):
+        sifout_filename = gzip.GzipFile(sifout_filename,'wb')
     tree.write(sifout_filename, encoding="UTF-8", xml_declaration=True)
 
 #main
@@ -231,9 +223,6 @@ if len(sys.argv) < 2:
 else:
     # defaults
     sifin_filename = sys.argv[1]
-    #make sure the plugin is called on sif, and not sifz
-    if not (os.path.splitext(sifin_filename)[-2].lower().endswith('.sif') or os.path.splitext(sifin_filename)[-1].lower().endswith('.sif')):
-        sys.exit("Synfig plug-ins only work on sif file, not sifz.\n\nPlease save your Synfig project (%s) as sif, then try again." % sifin_filename)
     labels_filepath = sys.argv[2] if len(sys.argv)>2 else os.path.join(os.path.dirname(sifin_filename), s.LABELS_FILE)
     sifout_filename = sys.argv[3] if len(sys.argv)>3 else sifin_filename
     process(sifin_filename, labels_filepath, sifout_filename)

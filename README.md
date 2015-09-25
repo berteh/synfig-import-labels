@@ -24,12 +24,12 @@ Using a simple white background and importing a set of 6 text lines with their t
 
 Run the script from within synfig:   
 
-1. open your synfig project, save it as .sif (Synfig Plug-ins don't work on the default .sifz format for now)
-1. run the plugin at _> Plug-Ins > Import Labels and Timings as Keyframes_
+1. open your synfig project
+1. run the plugin at _> Plug-Ins > Import Labels and Timings_
 
-or from the command-line: (only on sif files, unzip sifz manually before)
+or from the command-line:
 
-	python synfig-import-labels.py in.sif (labels.txt (out.sif))
+	python synfig-import-labels.py in.sifz (labels.txt (out.sifz))
 
 To create your own timed labels file you can:
 
@@ -37,7 +37,7 @@ To create your own timed labels file you can:
 1. export your labels via Tracks > Edit Labels > export, in Audacity.
 
 or simply use Notepad and create a table with 3 "columns": _start time (in sec)_ ``tab`` _end time (in sec)_``tab`` _text (single line)_.
-You can add, optionally, add a 4th column with the name of ``template`` to use for this text line and the following ones. Save the file as _labels.txt_ in the directory of your sif Synfig file project. Titles in the first row are optional, just the data will do just fine, but if you use titles, they must be _exactly_ the following:
+You can add, optionally, add a 4th column with the name of ``template`` to use for this text line and the following ones. Save the file as _labels.txt_ in the directory of your sifz Synfig file project. Titles in the first row are optional, just the data will do just fine, but if you use titles, they must be _exactly_ the following:
 
     start	stop	text	template
     0.500	1.50	first sentence showing for 1 second 	descending-text
