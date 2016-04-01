@@ -1,0 +1,7 @@
+start	stop	text	template
+0,000000	0,900000	part one
+1,000000	1,871346	part two	descending-text
+1,966796	2,432578	part three	fromleft-text
+2,507196	2,807196	part four
+3,232578	3,712881	part five	revealing-text
+4,255000	4,355000	part six
