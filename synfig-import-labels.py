@@ -61,7 +61,7 @@ def getCsvData(csv_filepath):
         rowlist = []
         for col in row:
             rowlist.append(col)
-        if(rowlist[0]=="start"):
+        if(rowlist[0]==s.HEADER[0]):
             header = rowlist
         else:
             data.append(rowlist)
@@ -79,8 +79,11 @@ def process(sifin_filename, labels_filepath, sifout_filename):
             sys.exit("Data file %s contains no data or could not be parsed, nothing to generate. Halting."%(labels_filepath))          
 
     # read input sif(z) file as xml
-    gz_input = gzip.GzipFile(sifin_filename) # handles compressed and uncompressed data alike.
-    tree = ET.parse(gz_input)
+    if(sifin_filename[-4:] == "sifz"):
+        sifin = gzip.GzipFile(sifin_filename)
+    else:
+        sifin = sifin_filename
+    tree = ET.parse(sifin)
     canvas = tree.getroot()
     fps = int(float(canvas.get("fps")))
     
