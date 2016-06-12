@@ -99,6 +99,7 @@ Preferably use github's [issues tracker](https://github.com/berteh/synfig-import
 
 - v0.1 - August 2014 - keyframe generation
 - v0.2 - September 2015 - objects generation
+- v0.3 - June 2016 - tiny improvements
 
 ## Licence
 GNU-GPL v2, same as [Synfig Studio](http://synfig.org).

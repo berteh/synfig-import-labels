@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
    <name>Import Labels and Timings</name>
-   <name xml:lang="fr">Importer Textes et Temps</name>
+   <name xml:lang="fr">Importer Textes et Temps Clés</name>
    <exec>synfig-import-labels.py</exec>
 </plugin>

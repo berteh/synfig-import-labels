@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright (c) 2014 by Berteh <berteh@gmail.com>
+# Copyright (c) 2014-2016 by Berteh <berteh@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,11 +41,15 @@ if script_dir not in sys.path:
     sys.path.insert(0, script_dir)
 
 
-def frames2sec(fps, secFrame): # convert Synfig "Xs Yf" time notation to <float> in seconds.
-    pattern  = "^((\d+)s)?(\s)?((\d+)f)?$"
-    m = re.match(pattern, secFrame)
-    [ g1, sec, g2, g3, frame] = m.groups(0)
-    return float(sec) + float(frame)/fps
+def frames2sec(fps, secFrame): # convert Synfig "Wh Xm Ys Zf" time notation to <float> in seconds.
+    pattern  = "^(?:(\d+)h)?\s?(?:(\d+)m)?\s?(?:(\d+)s)?\s?(?:(\d+)f)?$"
+    match = re.match(pattern, secFrame)
+    [h, m, s, f] = match.groups(0)
+    h2s = float(h)*3600 if h is not None else 0
+    m2s = float(m)*60 if m is not None else 0
+    s2s = float(s) if s is not None else 0
+    f2s = float(f)/fps if f is not None else 0
+    return h2s + m2s + s2s + f2s
 
 def sec2Frames(fps, seconds): # convert <float> seconds to [seconds, <int>seconds, <int>frames]
     ss = int(seconds)
@@ -205,7 +209,7 @@ def process(sifin_filename, labels_filepath, sifout_filename):
                     })
             
                 #print "1 object is being added to canvas for '%s'"%t
-                #TODO: give feedback to user if template not found on TemplateNotFoundError
+                #TODO: give feedback to user in GUI if template not found on TemplateNotFoundError
                 try:
                     l = renderer.render_name(templates[i], values)
                 except pystache.common.TemplateNotFoundError:
