@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <canvas antialias="1" begin-time="0f" bgcolor="0.500000 0.500000 0.500000 1.000000" end-time="5s" fps="24.000" height="270" version="0.9" view-box="-4.000000 2.250000 4.000000 -2.250000" width="480" xres="2834.645752" yres="2834.645752">
   <name>Synfig Test for Keyframe import</name>
   <keyframe active="true" desc="check for overwrite" time="0f">check for overwrite</keyframe>
