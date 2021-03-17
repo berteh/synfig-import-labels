@@ -57,11 +57,12 @@ A tutorial will be written on creating kynetic typographies one day... but I (no
 
 ## Install
 
-Decompress [plugin archive](https://github.com/berteh/synfig-import-labels/archive/master.zip ) into your synfig plugins directory (in linux: home/-user-/.synfig/plugins)
+Decompress [plugin archive](https://github.com/berteh/synfig-import-labels/archive/master.zip ) into your synfig plugins directory.
+In linux: ``home/-user-/.synfig/plugins``, in Windows: ``C:\Users\USERNAME\Synfig\plugins``. If you are using a portable version of synfig, you will find it at ``ROOT/share/synfig/plugins``.
 
 Another option is to clone [this repository](https://github.com/berteh/synfig-import-labels.git) in the same location.
 
-Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
+Requirements: Python 2.x (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
 
 ## Configuration
 
