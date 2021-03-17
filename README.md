@@ -36,7 +36,7 @@ To create your own timed labels file you can:
 1. use [Audacity to label track segments](http://multimedia.journalism.berkeley.edu/tutorials/audacity/adding-labels/)
 1. export your labels via Tracks > Edit Labels > export, in Audacity.
 
-or simply use Notepad and create a table with 3 "columns": _start time (in sec)_ ``tab`` _end time (in sec)_``tab`` _text (single line)_.
+or simply use **Notepad** and create a table with 3 "columns": _start time (in sec)_ ``tab`` _end time (in sec)_``tab`` _text (single line)_.
 You can add, optionally, add a 4th column with the name of ``template`` to use for this text line and the following ones. Save the file as _labels.txt_ in the directory of your sifz Synfig file project. Titles in the first row are optional, just the data will do just fine, but if you use titles, they must be _exactly_ the following:
 
     start	stop	text	template
@@ -45,11 +45,11 @@ You can add, optionally, add a 4th column with the name of ``template`` to use f
     2.40	3.2784	your imagination is the limit ! 	revealing-text
 
 
-You can use any spreadsheet software that is able to export to tsv (_tab separated value_ file), such as OpenOffice or Excel, just make sure to save as UTF-8 if you need proper accents supports.
+You can use any **spreadsheet** software that is able to export to tsv (_tab separated value_ file), such as OpenOffice or Excel, just make sure to save as UTF-8 if you need proper accents supports.
 
 Not mentioning any ``template`` column will simply use the default template (see [Configuration](#configuration))
 
-## Video Tutorial
+## How-to / Tutorial
 
 The use of this plugin to generate keyframes in a complete animation design is described in the [Synfig Audio Synchronisation tutorial](http://wiki.synfig.org/wiki/Doc:Audio_Synchronisation)
 
@@ -62,7 +62,9 @@ In linux: ``home/-user-/.synfig/plugins``, in Windows: ``C:\Users\USERNAME\Synfi
 
 Another option is to clone [this repository](https://github.com/berteh/synfig-import-labels.git) in the same location.
 
-Requirements: Python 2.x (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
+Requirements: Python (Synfig is a recommended option) - more info on [Synfig Plugins page](http://wiki.synfig.org/wiki/Doc:Plugins#How_to_install_plugins)
+
+More information on using plugins is available from the [Scribus documentation](https://synfig.readthedocs.io/en/latest/plugins.html#how-to-install-plugins).
 
 ## Configuration
 
